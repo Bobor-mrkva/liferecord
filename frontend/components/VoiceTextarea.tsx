@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
+import { Box, IconButton, Text, Textarea } from "@chakra-ui/react";
 import { useSpeechToText } from "@/hooks/useSpeechToText";
 
 type VoiceTextareaProps = {
@@ -28,40 +29,57 @@ export default function VoiceTextarea({
   const { isSupported, isListening, start, stop } = useSpeechToText(handleResult);
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="relative">
-        <textarea
+    <Box display="flex" flexDirection="column" gap={2}>
+      <Box position="relative">
+        <Textarea
           required={required}
           rows={rows}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className="w-full border border-amber-200 rounded-lg px-4 py-3 pr-14 text-base text-stone-900 leading-relaxed focus:outline-none focus:ring-2 focus:ring-amber-400"
+          w="full"
+          border="1px solid"
+          borderColor="amber.200"
+          borderRadius="lg"
+          px={4}
+          py={3}
+          pr={14}
+          fontSize="md"
+          color="stone.900"
+          lineHeight="relaxed"
+          _focus={{ outline: "none", boxShadow: "0 0 0 2px var(--chakra-colors-amber-400)" }}
         />
         {isSupported && (
-          <button
+          <IconButton
             type="button"
             onClick={isListening ? stop : start}
             aria-label={isListening ? "Stop voice input" : "Start voice input"}
             title={isListening ? "Stop voice input" : "Speak instead of typing"}
-            className={`absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center transition-colors ${
-              isListening
-                ? "bg-red-600 text-white animate-pulse"
-                : "bg-amber-100 text-amber-800 hover:bg-amber-200"
-            }`}
+            position="absolute"
+            top={3}
+            right={3}
+            w={9}
+            h={9}
+            borderRadius="full"
+            bg={isListening ? "red.600" : "amber.100"}
+            color={isListening ? "white" : "amber.800"}
+            _hover={{ bg: isListening ? "red.600" : "amber.200" }}
+            animation={isListening ? "pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite" : undefined}
           >
             🎤
-          </button>
+          </IconButton>
         )}
-      </div>
+      </Box>
       {!isSupported && (
-        <p className="text-xs text-stone-400">
+        <Text fontSize="xs" color="stone.400">
           Voice input isn&apos;t available in this browser — please type instead.
-        </p>
+        </Text>
       )}
       {isListening && (
-        <p className="text-xs text-amber-700">Listening... speak your answer, then click the mic to stop.</p>
+        <Text fontSize="xs" color="amber.700">
+          Listening... speak your answer, then click the mic to stop.
+        </Text>
       )}
-    </div>
+    </Box>
   );
 }

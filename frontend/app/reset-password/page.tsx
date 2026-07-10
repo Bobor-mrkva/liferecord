@@ -2,9 +2,11 @@
 
 import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
+import NextLink from "next/link";
+import { Button, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import { api, ApiError } from "@/lib/api";
 import PasswordInput from "@/components/PasswordInput";
+import AuthCard from "@/components/AuthCard";
 
 function ResetPasswordForm() {
   const [password, setPassword] = useState("");
@@ -38,21 +40,23 @@ function ResetPasswordForm() {
   if (!token) {
     return (
       <>
-        <p className="text-red-600">This reset link is invalid or has expired.</p>
-        <p className="text-sm text-stone-500 mt-6 text-center">
-          <Link href="/forgot-password" className="text-amber-800 font-medium hover:underline">
-            Request a new link
+        <Text color="red.600">This reset link is invalid or has expired.</Text>
+        <Text fontSize="sm" color="stone.500" mt={6} textAlign="center">
+          <Link asChild color="amber.800" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
+            <NextLink href="/forgot-password">Request a new link</NextLink>
           </Link>
-        </p>
+        </Text>
       </>
     );
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        <label className="flex flex-col gap-2">
-          <span className="text-sm font-medium text-stone-700">New password</span>
+      <Flex as="form" onSubmit={handleSubmit} direction="column" gap={5}>
+        <Flex as="label" direction="column" gap={2}>
+          <Text fontSize="sm" fontWeight="medium" color="stone.700">
+            New password
+          </Text>
           <PasswordInput
             value={password}
             onChange={setPassword}
@@ -60,9 +64,11 @@ function ResetPasswordForm() {
             minLength={8}
             placeholder="At least 8 characters"
           />
-        </label>
-        <label className="flex flex-col gap-2">
-          <span className="text-sm font-medium text-stone-700">Confirm new password</span>
+        </Flex>
+        <Flex as="label" direction="column" gap={2}>
+          <Text fontSize="sm" fontWeight="medium" color="stone.700">
+            Confirm new password
+          </Text>
           <PasswordInput
             value={confirmPassword}
             onChange={setConfirmPassword}
@@ -70,51 +76,61 @@ function ResetPasswordForm() {
             minLength={8}
             placeholder="Re-enter your new password"
           />
-        </label>
+        </Flex>
 
         {error && (
-          <p className="text-red-600 text-sm">
+          <Text color="red.600" fontSize="sm">
             {error}
             {error.includes("invalid or has expired") && (
               <>
                 {" "}
-                <Link href="/forgot-password" className="font-medium hover:underline">
-                  Request a new link
+                <Link asChild fontWeight="medium" _hover={{ textDecoration: "underline" }}>
+                  <NextLink href="/forgot-password">Request a new link</NextLink>
                 </Link>
               </>
             )}
-          </p>
+          </Text>
         )}
 
-        <button
+        <Button
           type="submit"
           disabled={submitting}
-          className="bg-amber-800 text-amber-50 px-6 py-3 rounded-full font-medium hover:bg-amber-900 transition-colors disabled:opacity-60"
+          bg="amber.800"
+          color="amber.50"
+          borderRadius="full"
+          fontWeight="medium"
+          px={6}
+          py={3}
+          h="auto"
+          _hover={{ bg: "amber.900" }}
+          _disabled={{ opacity: 0.6 }}
         >
           {submitting ? "Saving..." : "Set new password"}
-        </button>
-      </form>
+        </Button>
+      </Flex>
 
-      <p className="text-sm text-stone-500 mt-6 text-center">
-        <Link href="/login" className="text-amber-800 font-medium hover:underline">
-          Back to login
+      <Text fontSize="sm" color="stone.500" mt={6} textAlign="center">
+        <Link asChild color="amber.800" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
+          <NextLink href="/login">Back to login</NextLink>
         </Link>
-      </p>
+      </Text>
     </>
   );
 }
 
 export default function ResetPasswordPage() {
   return (
-    <main className="flex flex-col items-center px-6 py-16 bg-amber-50 min-h-screen">
-      <div className="w-full max-w-md bg-white border border-amber-200 rounded-2xl p-8 shadow-sm">
-        <h1 className="text-3xl font-bold text-stone-900 mb-2">Choose a new password</h1>
-        <p className="text-stone-500 mb-8">Enter a new password for your account.</p>
+    <AuthCard>
+      <Heading as="h1" fontSize="3xl" fontWeight="bold" color="stone.900" mb={2}>
+        Choose a new password
+      </Heading>
+      <Text color="stone.500" mb={8}>
+        Enter a new password for your account.
+      </Text>
 
-        <Suspense fallback={null}>
-          <ResetPasswordForm />
-        </Suspense>
-      </div>
-    </main>
+      <Suspense fallback={null}>
+        <ResetPasswordForm />
+      </Suspense>
+    </AuthCard>
   );
 }

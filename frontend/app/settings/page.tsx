@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Box, Button, Flex, Heading, Input, Text } from "@chakra-ui/react";
 import { api, ApiError, formatDuration, User } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
 import PasswordInput from "@/components/PasswordInput";
@@ -37,13 +38,15 @@ export default function SettingsPage() {
   if (authLoading || !user) return null;
 
   return (
-    <main className="flex flex-col items-center px-6 py-16 bg-amber-50 min-h-screen">
-      <div className="w-full max-w-md flex flex-col gap-8">
-        <h1 className="text-3xl font-bold text-stone-900">Account settings</h1>
+    <Flex as="main" direction="column" align="center" px={6} py={16} bg="amber.50" minH="100vh">
+      <Flex w="full" maxW="md" direction="column" gap={8}>
+        <Heading as="h1" fontSize="3xl" fontWeight="bold" color="stone.900">
+          Account settings
+        </Heading>
         <NameForm user={user} onSaved={refresh} />
         <PasswordForm user={user} onSaved={refresh} />
-      </div>
-    </main>
+      </Flex>
+    </Flex>
   );
 }
 
@@ -71,34 +74,65 @@ function NameForm({ user, onSaved }: { user: User; onSaved: () => void }) {
   };
 
   return (
-    <div className="bg-white border border-amber-200 rounded-2xl p-8">
-      <h2 className="text-xl font-semibold text-stone-900 mb-1">Your name</h2>
-      <p className="text-stone-500 text-sm mb-6">You can change your name once every 24 hours.</p>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
+    <Box bg="white" border="1px solid" borderColor="amber.200" borderRadius="2xl" p={8}>
+      <Heading as="h2" fontSize="xl" fontWeight="semibold" color="stone.900" mb={1}>
+        Your name
+      </Heading>
+      <Text color="stone.500" fontSize="sm" mb={6}>
+        You can change your name once every 24 hours.
+      </Text>
+      <Flex as="form" onSubmit={handleSubmit} direction="column" gap={4}>
+        <Input
           type="text"
           required
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
           disabled={cooldown > 0}
-          className="border border-amber-200 rounded-lg px-4 py-3 text-base text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-400 disabled:bg-stone-50 disabled:text-stone-400"
+          border="1px solid"
+          borderColor="amber.200"
+          borderRadius="lg"
+          px={4}
+          py={3}
+          h="auto"
+          fontSize="md"
+          color="stone.900"
+          _focus={{ outline: "none", boxShadow: "0 0 0 2px var(--chakra-colors-amber-400)" }}
+          _disabled={{ bg: "stone.50", color: "stone.400" }}
         />
         {cooldown > 0 && (
-          <p className="text-sm text-stone-500">
+          <Text fontSize="sm" color="stone.500">
             You can change your name again in {formatDuration(cooldown)}.
-          </p>
+          </Text>
         )}
-        {error && <p className="text-red-600 text-sm">{error}</p>}
-        {success && <p className="text-green-700 text-sm">Name updated.</p>}
-        <button
-          type="submit"
-          disabled={submitting || cooldown > 0}
-          className="self-start bg-amber-800 text-amber-50 px-5 py-2.5 rounded-full font-medium hover:bg-amber-900 transition-colors disabled:opacity-50"
-        >
-          {submitting ? "Saving..." : "Save name"}
-        </button>
-      </form>
-    </div>
+        {error && (
+          <Text color="red.600" fontSize="sm">
+            {error}
+          </Text>
+        )}
+        {success && (
+          <Text color="green.700" fontSize="sm">
+            Name updated.
+          </Text>
+        )}
+        <Box>
+          <Button
+            type="submit"
+            disabled={submitting || cooldown > 0}
+            bg="amber.800"
+            color="amber.50"
+            borderRadius="full"
+            fontWeight="medium"
+            px={5}
+            py={2.5}
+            h="auto"
+            _hover={{ bg: "amber.900" }}
+            _disabled={{ opacity: 0.5 }}
+          >
+            {submitting ? "Saving..." : "Save name"}
+          </Button>
+        </Box>
+      </Flex>
+    </Box>
   );
 }
 
@@ -138,21 +172,29 @@ function PasswordForm({ user, onSaved }: { user: User; onSaved: () => void }) {
   };
 
   return (
-    <div className="bg-white border border-amber-200 rounded-2xl p-8">
-      <h2 className="text-xl font-semibold text-stone-900 mb-1">Password</h2>
-      <p className="text-stone-500 text-sm mb-6">You can change your password once every 5 minutes.</p>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <label className="flex flex-col gap-2">
-          <span className="text-sm font-medium text-stone-700">Current password</span>
+    <Box bg="white" border="1px solid" borderColor="amber.200" borderRadius="2xl" p={8}>
+      <Heading as="h2" fontSize="xl" fontWeight="semibold" color="stone.900" mb={1}>
+        Password
+      </Heading>
+      <Text color="stone.500" fontSize="sm" mb={6}>
+        You can change your password once every 5 minutes.
+      </Text>
+      <Flex as="form" onSubmit={handleSubmit} direction="column" gap={4}>
+        <Flex as="label" direction="column" gap={2}>
+          <Text fontSize="sm" fontWeight="medium" color="stone.700">
+            Current password
+          </Text>
           <PasswordInput
             value={currentPassword}
             onChange={setCurrentPassword}
             autoComplete="current-password"
             placeholder="Your current password"
           />
-        </label>
-        <label className="flex flex-col gap-2">
-          <span className="text-sm font-medium text-stone-700">New password</span>
+        </Flex>
+        <Flex as="label" direction="column" gap={2}>
+          <Text fontSize="sm" fontWeight="medium" color="stone.700">
+            New password
+          </Text>
           <PasswordInput
             value={newPassword}
             onChange={setNewPassword}
@@ -160,9 +202,11 @@ function PasswordForm({ user, onSaved }: { user: User; onSaved: () => void }) {
             autoComplete="new-password"
             placeholder="At least 8 characters"
           />
-        </label>
-        <label className="flex flex-col gap-2">
-          <span className="text-sm font-medium text-stone-700">Confirm new password</span>
+        </Flex>
+        <Flex as="label" direction="column" gap={2}>
+          <Text fontSize="sm" fontWeight="medium" color="stone.700">
+            Confirm new password
+          </Text>
           <PasswordInput
             value={confirmPassword}
             onChange={setConfirmPassword}
@@ -170,22 +214,40 @@ function PasswordForm({ user, onSaved }: { user: User; onSaved: () => void }) {
             autoComplete="new-password"
             placeholder="Type your new password again"
           />
-        </label>
+        </Flex>
         {cooldown > 0 && (
-          <p className="text-sm text-stone-500">
+          <Text fontSize="sm" color="stone.500">
             You can change your password again in {formatDuration(cooldown)}.
-          </p>
+          </Text>
         )}
-        {error && <p className="text-red-600 text-sm">{error}</p>}
-        {success && <p className="text-green-700 text-sm">Password updated.</p>}
-        <button
-          type="submit"
-          disabled={submitting || cooldown > 0}
-          className="self-start bg-amber-800 text-amber-50 px-5 py-2.5 rounded-full font-medium hover:bg-amber-900 transition-colors disabled:opacity-50"
-        >
-          {submitting ? "Saving..." : "Change password"}
-        </button>
-      </form>
-    </div>
+        {error && (
+          <Text color="red.600" fontSize="sm">
+            {error}
+          </Text>
+        )}
+        {success && (
+          <Text color="green.700" fontSize="sm">
+            Password updated.
+          </Text>
+        )}
+        <Box>
+          <Button
+            type="submit"
+            disabled={submitting || cooldown > 0}
+            bg="amber.800"
+            color="amber.50"
+            borderRadius="full"
+            fontWeight="medium"
+            px={5}
+            py={2.5}
+            h="auto"
+            _hover={{ bg: "amber.900" }}
+            _disabled={{ opacity: 0.5 }}
+          >
+            {submitting ? "Saving..." : "Change password"}
+          </Button>
+        </Box>
+      </Flex>
+    </Box>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Box, Button, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import { api, ApiError, Question, Story } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
 import StoryForm, { StoryFormValues } from "@/components/StoryForm";
@@ -52,42 +53,74 @@ export default function NewStoryPage() {
   };
 
   return (
-    <main className="flex flex-col items-center px-6 py-16 bg-amber-50 min-h-screen">
-      <div className="w-full max-w-2xl">
-        <h1 className="text-3xl font-bold text-stone-900 mb-2">Write a new story</h1>
-        <p className="text-stone-500 mb-8">
+    <Flex as="main" direction="column" align="center" px={6} py={16} bg="amber.50" minH="100vh">
+      <Box w="full" maxW="2xl">
+        <Heading as="h1" fontSize="3xl" fontWeight="bold" color="stone.900" mb={2}>
+          Write a new story
+        </Heading>
+        <Text color="stone.500" mb={8}>
           Choose how you&apos;d like to share, then write at your own pace.
-        </p>
+        </Text>
 
         {!mode ? (
-          <div className="grid sm:grid-cols-2 gap-4">
-            <button
+          <Grid templateColumns={{ base: "1fr", sm: "repeat(2, 1fr)" }} gap={4}>
+            <Button
               onClick={() => setMode("freeform")}
-              className="text-left bg-white border border-amber-200 rounded-2xl p-6 hover:border-amber-400 transition-colors"
+              variant="plain"
+              textAlign="left"
+              display="block"
+              h="auto"
+              bg="white"
+              border="1px solid"
+              borderColor="amber.200"
+              borderRadius="2xl"
+              p={6}
+              _hover={{ borderColor: "amber.400" }}
+              transition="border-color 0.2s"
             >
-              <h2 className="text-xl font-semibold text-stone-900 mb-2">Free-form life story</h2>
-              <p className="text-stone-500 text-sm">
+              <Heading as="h2" fontSize="xl" fontWeight="semibold" color="stone.900" mb={2}>
+                Free-form life story
+              </Heading>
+              <Text color="stone.500" fontSize="sm" fontWeight="normal">
                 Write your story in your own words, at your own pace.
-              </p>
-            </button>
-            <button
+              </Text>
+            </Button>
+            <Button
               onClick={() => setMode("questions")}
-              className="text-left bg-white border border-amber-200 rounded-2xl p-6 hover:border-amber-400 transition-colors"
+              variant="plain"
+              textAlign="left"
+              display="block"
+              h="auto"
+              bg="white"
+              border="1px solid"
+              borderColor="amber.200"
+              borderRadius="2xl"
+              p={6}
+              _hover={{ borderColor: "amber.400" }}
+              transition="border-color 0.2s"
             >
-              <h2 className="text-xl font-semibold text-stone-900 mb-2">Lessons learned</h2>
-              <p className="text-stone-500 text-sm">
+              <Heading as="h2" fontSize="xl" fontWeight="semibold" color="stone.900" mb={2}>
+                Lessons learned
+              </Heading>
+              <Text color="stone.500" fontSize="sm" fontWeight="normal">
                 Answer a few reflective questions to help others learn from your experience.
-              </p>
-            </button>
-          </div>
+              </Text>
+            </Button>
+          </Grid>
         ) : (
-          <div className="bg-white border border-amber-200 rounded-2xl p-8">
-            <button
+          <Box bg="white" border="1px solid" borderColor="amber.200" borderRadius="2xl" p={8}>
+            <Button
               onClick={() => setMode(null)}
-              className="text-sm text-amber-800 hover:underline mb-6"
+              variant="plain"
+              fontSize="sm"
+              color="amber.800"
+              _hover={{ textDecoration: "underline" }}
+              mb={6}
+              px={0}
+              h="auto"
             >
               ← Choose a different way to write
-            </button>
+            </Button>
             <StoryForm
               mode={mode}
               questions={questions}
@@ -96,9 +129,9 @@ export default function NewStoryPage() {
               error={error}
               onSubmit={handleSubmit}
             />
-          </div>
+          </Box>
         )}
-      </div>
-    </main>
+      </Box>
+    </Flex>
   );
 }

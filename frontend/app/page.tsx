@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import NextLink from "next/link";
+import { Box, Flex, Grid, Heading, Link, Text } from "@chakra-ui/react";
 import { useAuth } from "@/context/AuthContext";
 
 export default function Home() {
@@ -8,38 +9,80 @@ export default function Home() {
   const writeHref = user ? "/stories/new" : "/signup";
 
   return (
-    <main className="flex flex-col min-h-screen bg-amber-50 text-stone-800 font-[family-name:var(--font-geist-sans)]">
+    <Flex
+      as="main"
+      direction="column"
+      minH="100vh"
+      bg="amber.50"
+      color="stone.800"
+      fontFamily="var(--font-geist-sans)"
+    >
       {/* Hero */}
-      <section className="flex flex-col items-center text-center px-6 py-24 gap-6 max-w-3xl mx-auto">
-        <span className="text-sm font-medium tracking-widest uppercase text-amber-700">
+      <Flex
+        as="section"
+        direction="column"
+        align="center"
+        textAlign="center"
+        px={6}
+        py={24}
+        gap={6}
+        maxW="3xl"
+        mx="auto"
+      >
+        <Text fontSize="sm" fontWeight="medium" letterSpacing="widest" textTransform="uppercase" color="amber.700">
           Every life is a story worth telling
-        </span>
-        <h1 className="text-5xl font-bold leading-tight text-stone-900">
-          Your memories deserve<br />to live on
-        </h1>
-        <p className="text-lg text-stone-600 max-w-xl leading-relaxed">
+        </Text>
+        <Heading as="h1" fontSize="5xl" fontWeight="bold" lineHeight="tight" color="stone.900">
+          Your memories deserve
+          <br />
+          to live on
+        </Heading>
+        <Text fontSize="lg" color="stone.600" maxW="xl" lineHeight="relaxed">
           Liferecord is a warm, simple place where elders can write and share their life
           stories — for family, for the world, and for generations to come.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 mt-4">
+        </Text>
+        <Flex direction={{ base: "column", sm: "row" }} gap={3} mt={4}>
           <Link
-            href={writeHref}
-            className="bg-amber-800 text-amber-50 px-7 py-3 rounded-full text-base font-medium hover:bg-amber-900 transition-colors"
+            asChild
+            bg="amber.800"
+            color="amber.50"
+            px={7}
+            py={3}
+            borderRadius="full"
+            fontSize="md"
+            fontWeight="medium"
+            _hover={{ bg: "amber.900" }}
+            transition="background-color 0.2s"
           >
-            Write your story
+            <NextLink href={writeHref}>Write your story</NextLink>
           </Link>
           <Link
-            href="/stories"
-            className="border border-amber-800 text-amber-800 px-7 py-3 rounded-full text-base font-medium hover:bg-amber-100 transition-colors"
+            asChild
+            border="1px solid"
+            borderColor="amber.800"
+            color="amber.800"
+            px={7}
+            py={3}
+            borderRadius="full"
+            fontSize="md"
+            fontWeight="medium"
+            _hover={{ bg: "amber.100" }}
+            transition="background-color 0.2s"
           >
-            Read stories
+            <NextLink href="/stories">Read stories</NextLink>
           </Link>
-        </div>
-      </section>
+        </Flex>
+      </Flex>
 
       {/* Feature strip */}
-      <section className="bg-white border-y border-amber-200 py-16 px-6">
-        <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-10 text-center">
+      <Box as="section" bg="white" borderY="1px solid" borderColor="amber.200" py={16} px={6}>
+        <Grid
+          maxW="4xl"
+          mx="auto"
+          templateColumns={{ base: "1fr", sm: "repeat(3, 1fr)" }}
+          gap={10}
+          textAlign="center"
+        >
           {[
             {
               icon: "✍️",
@@ -57,55 +100,85 @@ export default function Home() {
               desc: "Your stories are safely stored and available to those you choose, now and in the future.",
             },
           ].map((f) => (
-            <div key={f.title} className="flex flex-col items-center gap-3">
-              <span className="text-4xl">{f.icon}</span>
-              <h3 className="font-semibold text-lg text-stone-900">{f.title}</h3>
-              <p className="text-stone-500 text-sm leading-relaxed">{f.desc}</p>
-            </div>
+            <Flex key={f.title} direction="column" align="center" gap={3}>
+              <Text fontSize="4xl">{f.icon}</Text>
+              <Heading as="h3" fontWeight="semibold" fontSize="lg" color="stone.900">
+                {f.title}
+              </Heading>
+              <Text color="stone.500" fontSize="sm" lineHeight="relaxed">
+                {f.desc}
+              </Text>
+            </Flex>
           ))}
-        </div>
-      </section>
+        </Grid>
+      </Box>
 
       {/* How it works */}
-      <section id="how-it-works" className="py-20 px-6 max-w-3xl mx-auto w-full">
-        <h2 className="text-3xl font-bold text-center mb-12 text-stone-900">How it works</h2>
-        <ol className="flex flex-col gap-8">
+      <Box as="section" id="how-it-works" py={20} px={6} maxW="3xl" mx="auto" w="full">
+        <Heading as="h2" fontSize="3xl" fontWeight="bold" textAlign="center" mb={12} color="stone.900">
+          How it works
+        </Heading>
+        <Flex as="ol" direction="column" gap={8}>
           {[
             { step: "1", title: "Create an account", desc: "Sign up in seconds — no complicated setup needed." },
             { step: "2", title: "Write a memory", desc: "Use our gentle editor to write a story, big or small." },
             { step: "3", title: "Share it", desc: "Choose who can read it — family only, or the whole world." },
           ].map((s) => (
-            <li key={s.step} className="flex gap-5 items-start">
-              <span className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-800 text-amber-50 flex items-center justify-center font-bold text-lg">
+            <Flex as="li" key={s.step} gap={5} align="flex-start">
+              <Flex
+                flexShrink={0}
+                w={10}
+                h={10}
+                borderRadius="full"
+                bg="amber.800"
+                color="amber.50"
+                align="center"
+                justify="center"
+                fontWeight="bold"
+                fontSize="lg"
+              >
                 {s.step}
-              </span>
-              <div>
-                <h3 className="font-semibold text-stone-900">{s.title}</h3>
-                <p className="text-stone-500 text-sm mt-1">{s.desc}</p>
-              </div>
-            </li>
+              </Flex>
+              <Box>
+                <Heading as="h3" fontWeight="semibold" fontSize="md" color="stone.900">
+                  {s.title}
+                </Heading>
+                <Text color="stone.500" fontSize="sm" mt={1}>
+                  {s.desc}
+                </Text>
+              </Box>
+            </Flex>
           ))}
-        </ol>
-      </section>
+        </Flex>
+      </Box>
 
       {/* CTA banner */}
-      <section className="bg-amber-800 text-amber-50 py-16 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-3">Ready to begin?</h2>
-        <p className="text-amber-200 mb-8 max-w-md mx-auto">
+      <Box as="section" bg="amber.800" color="amber.50" py={16} px={6} textAlign="center">
+        <Heading as="h2" fontSize="3xl" fontWeight="bold" mb={3}>
+          Ready to begin?
+        </Heading>
+        <Text color="amber.200" mb={8} maxW="md" mx="auto">
           Join Liferecord today and start turning your memories into stories that last.
-        </p>
+        </Text>
         <Link
-          href={writeHref}
-          className="bg-amber-50 text-amber-900 px-8 py-3 rounded-full font-medium hover:bg-white transition-colors"
+          asChild
+          bg="amber.50"
+          color="amber.900"
+          px={8}
+          py={3}
+          borderRadius="full"
+          fontWeight="medium"
+          _hover={{ bg: "white" }}
+          transition="background-color 0.2s"
         >
-          Get started — it&apos;s free
+          <NextLink href={writeHref}>Get started — it&apos;s free</NextLink>
         </Link>
-      </section>
+      </Box>
 
       {/* Footer */}
-      <footer className="py-6 px-8 text-center text-stone-400 text-sm border-t border-amber-200">
+      <Box as="footer" py={6} px={8} textAlign="center" color="stone.400" fontSize="sm" borderTop="1px solid" borderColor="amber.200">
         © {new Date().getFullYear()} Liferecord. Built with care.
-      </footer>
-    </main>
+      </Box>
+    </Flex>
   );
 }

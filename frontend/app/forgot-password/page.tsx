@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import NextLink from "next/link";
+import { Button, Flex, Heading, Input, Link, Text } from "@chakra-ui/react";
 import { api, ApiError } from "@/lib/api";
+import AuthCard from "@/components/AuthCard";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -25,49 +27,71 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <main className="flex flex-col items-center px-6 py-16 bg-amber-50 min-h-screen">
-      <div className="w-full max-w-md bg-white border border-amber-200 rounded-2xl p-8 shadow-sm">
-        <h1 className="text-3xl font-bold text-stone-900 mb-2">Reset your password</h1>
-        <p className="text-stone-500 mb-8">
-          Enter your email and we&apos;ll send you a link to choose a new password.
-        </p>
+    <AuthCard>
+      <Heading as="h1" fontSize="3xl" fontWeight="bold" color="stone.900" mb={2}>
+        Reset your password
+      </Heading>
+      <Text color="stone.500" mb={8}>
+        Enter your email and we&apos;ll send you a link to choose a new password.
+      </Text>
 
-        {sent ? (
-          <p className="text-stone-700">
-            If an account exists for that email, we&apos;ve sent a reset link. Check your inbox.
-          </p>
-        ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-            <label className="flex flex-col gap-2">
-              <span className="text-sm font-medium text-stone-700">Email</span>
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="border border-amber-200 rounded-lg px-4 py-3 text-base text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-400"
-                placeholder="you@example.com"
-              />
-            </label>
+      {sent ? (
+        <Text color="stone.700">
+          If an account exists for that email, we&apos;ve sent a reset link. Check your inbox.
+        </Text>
+      ) : (
+        <Flex as="form" onSubmit={handleSubmit} direction="column" gap={5}>
+          <Flex as="label" direction="column" gap={2}>
+            <Text fontSize="sm" fontWeight="medium" color="stone.700">
+              Email
+            </Text>
+            <Input
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              border="1px solid"
+              borderColor="amber.200"
+              borderRadius="lg"
+              px={4}
+              py={3}
+              h="auto"
+              fontSize="md"
+              color="stone.900"
+              _focus={{ outline: "none", boxShadow: "0 0 0 2px var(--chakra-colors-amber-400)" }}
+              placeholder="you@example.com"
+            />
+          </Flex>
 
-            {error && <p className="text-red-600 text-sm">{error}</p>}
+          {error && (
+            <Text color="red.600" fontSize="sm">
+              {error}
+            </Text>
+          )}
 
-            <button
-              type="submit"
-              disabled={submitting}
-              className="bg-amber-800 text-amber-50 px-6 py-3 rounded-full font-medium hover:bg-amber-900 transition-colors disabled:opacity-60"
-            >
-              {submitting ? "Sending..." : "Send reset link"}
-            </button>
-          </form>
-        )}
+          <Button
+            type="submit"
+            disabled={submitting}
+            bg="amber.800"
+            color="amber.50"
+            borderRadius="full"
+            fontWeight="medium"
+            px={6}
+            py={3}
+            h="auto"
+            _hover={{ bg: "amber.900" }}
+            _disabled={{ opacity: 0.6 }}
+          >
+            {submitting ? "Sending..." : "Send reset link"}
+          </Button>
+        </Flex>
+      )}
 
-        <p className="text-sm text-stone-500 mt-6 text-center">
-          <Link href="/login" className="text-amber-800 font-medium hover:underline">
-            Back to login
-          </Link>
-        </p>
-      </div>
-    </main>
+      <Text fontSize="sm" color="stone.500" mt={6} textAlign="center">
+        <Link asChild color="amber.800" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
+          <NextLink href="/login">Back to login</NextLink>
+        </Link>
+      </Text>
+    </AuthCard>
   );
 }

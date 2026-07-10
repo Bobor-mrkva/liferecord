@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 import { useRouter } from "next/navigation";
+import { Box, Button, Flex, Link, Text } from "@chakra-ui/react";
 import { useAuth } from "@/context/AuthContext";
 
 export default function AccountMenu() {
@@ -36,44 +37,85 @@ export default function AccountMenu() {
   };
 
   return (
-    <div className="relative" ref={menuRef}>
-      <button
+    <Box position="relative" ref={menuRef}>
+      <Button
         onClick={handleToggle}
-        className="bg-amber-800 text-amber-50 px-4 py-2 rounded-full hover:bg-amber-900 transition-colors"
+        bg="amber.800"
+        color="amber.50"
+        borderRadius="full"
+        _hover={{ bg: "amber.900" }}
       >
         {user.display_name}
-      </button>
+      </Button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-64 bg-white border border-amber-200 rounded-xl shadow-lg py-4 px-5 z-10 text-left">
-          <p className="font-semibold text-stone-900">{user.display_name}</p>
-          <p className="text-sm text-stone-500 mb-3">{user.email}</p>
-          <div className="flex flex-col gap-1 text-sm text-stone-600 border-t border-amber-100 pt-3 mb-3">
-            <p>
+        <Box
+          position="absolute"
+          right={0}
+          mt={2}
+          w="64"
+          bg="white"
+          border="1px solid"
+          borderColor="amber.200"
+          borderRadius="xl"
+          boxShadow="lg"
+          py={4}
+          px={5}
+          zIndex={10}
+          textAlign="left"
+        >
+          <Text fontWeight="semibold" color="stone.900">
+            {user.display_name}
+          </Text>
+          <Text fontSize="sm" color="stone.500" mb={3}>
+            {user.email}
+          </Text>
+          <Flex
+            direction="column"
+            gap={1}
+            fontSize="sm"
+            color="stone.600"
+            borderTop="1px solid"
+            borderColor="amber.100"
+            pt={3}
+            mb={3}
+          >
+            <Text>
               {user.story_count} {user.story_count === 1 ? "story" : "stories"} written
-            </p>
-            <p>
+            </Text>
+            <Text>
               {user.total_views} {user.total_views === 1 ? "person has" : "people have"} read your
               stories
-            </p>
-          </div>
-          <div className="flex flex-col gap-2 border-t border-amber-100 pt-3">
+            </Text>
+          </Flex>
+          <Flex direction="column" gap={2} borderTop="1px solid" borderColor="amber.100" pt={3}>
             <Link
-              href="/settings"
-              onClick={() => setOpen(false)}
-              className="text-sm text-amber-800 font-medium hover:underline"
+              asChild
+              fontSize="sm"
+              color="amber.800"
+              fontWeight="medium"
+              _hover={{ textDecoration: "underline" }}
             >
-              Settings
+              <NextLink href="/settings" onClick={() => setOpen(false)}>
+                Settings
+              </NextLink>
             </Link>
-            <button
+            <Button
               onClick={handleLogout}
-              className="text-sm text-red-600 font-medium hover:underline text-left"
+              variant="plain"
+              fontSize="sm"
+              color="red.600"
+              fontWeight="medium"
+              justifyContent="flex-start"
+              px={0}
+              h="auto"
+              _hover={{ textDecoration: "underline" }}
             >
               Log out
-            </button>
-          </div>
-        </div>
+            </Button>
+          </Flex>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 }

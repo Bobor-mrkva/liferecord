@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { api, Story } from "@/lib/api";
 import StoryCard from "@/components/StoryCard";
 
@@ -12,23 +13,27 @@ export default function PublicStoriesPage() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center px-6 py-16 bg-amber-50 min-h-screen">
-      <div className="w-full max-w-3xl">
-        <h1 className="text-3xl font-bold text-stone-900 mb-2">Stories from our community</h1>
-        <p className="text-stone-500 mb-8">Life stories and lessons, shared publicly.</p>
+    <Flex as="main" direction="column" align="center" px={6} py={16} bg="amber.50" minH="100vh">
+      <Box w="full" maxW="3xl">
+        <Heading as="h1" fontSize="3xl" fontWeight="bold" color="stone.900" mb={2}>
+          Stories from our community
+        </Heading>
+        <Text color="stone.500" mb={8}>
+          Life stories and lessons, shared publicly.
+        </Text>
 
         {!stories ? (
-          <p className="text-stone-500">Loading...</p>
+          <Text color="stone.500">Loading...</Text>
         ) : stories.length === 0 ? (
-          <p className="text-stone-500">No public stories yet. Be the first to share yours.</p>
+          <Text color="stone.500">No public stories yet. Be the first to share yours.</Text>
         ) : (
-          <div className="flex flex-col gap-4">
+          <Flex direction="column" gap={4}>
             {stories.map((story) => (
               <StoryCard key={story.id} story={story} />
             ))}
-          </div>
+          </Flex>
         )}
-      </div>
-    </main>
+      </Box>
+    </Flex>
   );
 }

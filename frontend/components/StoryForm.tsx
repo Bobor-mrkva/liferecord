@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Box, Button, Fieldset, Flex, Input, Text } from "@chakra-ui/react";
 import { Question } from "@/lib/api";
 import VoiceTextarea from "@/components/VoiceTextarea";
 
@@ -45,50 +46,72 @@ export default function StoryForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-      <label className="flex flex-col gap-2">
-        <span className="text-sm font-medium text-stone-700">Title</span>
-        <input
+    <Flex as="form" onSubmit={handleSubmit} direction="column" gap={6}>
+      <Flex as="label" direction="column" gap={2}>
+        <Text fontSize="sm" fontWeight="medium" color="stone.700">
+          Title
+        </Text>
+        <Input
           type="text"
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="border border-amber-200 rounded-lg px-4 py-3 text-base text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-400"
+          border="1px solid"
+          borderColor="amber.200"
+          borderRadius="lg"
+          px={4}
+          py={3}
+          h="auto"
+          fontSize="md"
+          color="stone.900"
+          _focus={{ outline: "none", boxShadow: "0 0 0 2px var(--chakra-colors-amber-400)" }}
           placeholder="Give your story a title"
         />
-      </label>
+      </Flex>
 
-      <fieldset className="flex flex-col gap-2">
-        <legend className="text-sm font-medium text-stone-700 mb-1">Who can see this?</legend>
-        <div className="flex gap-3">
-          <button
+      <Fieldset.Root>
+        <Fieldset.Legend fontSize="sm" fontWeight="medium" color="stone.700" mb={1}>
+          Who can see this?
+        </Fieldset.Legend>
+        <Flex gap={3}>
+          <Button
             type="button"
             onClick={() => setVisibility("private")}
-            className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
-              visibility === "private"
-                ? "bg-amber-800 text-amber-50 border-amber-800"
-                : "border-amber-200 text-stone-600 hover:bg-amber-100"
-            }`}
+            borderRadius="full"
+            border="1px solid"
+            fontSize="sm"
+            fontWeight="medium"
+            transition="colors 0.2s"
+            bg={visibility === "private" ? "amber.800" : "transparent"}
+            color={visibility === "private" ? "amber.50" : "stone.600"}
+            borderColor={visibility === "private" ? "amber.800" : "amber.200"}
+            _hover={{ bg: visibility === "private" ? "amber.800" : "amber.100" }}
           >
             Private — only me
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             onClick={() => setVisibility("public")}
-            className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
-              visibility === "public"
-                ? "bg-amber-800 text-amber-50 border-amber-800"
-                : "border-amber-200 text-stone-600 hover:bg-amber-100"
-            }`}
+            borderRadius="full"
+            border="1px solid"
+            fontSize="sm"
+            fontWeight="medium"
+            transition="colors 0.2s"
+            bg={visibility === "public" ? "amber.800" : "transparent"}
+            color={visibility === "public" ? "amber.50" : "stone.600"}
+            borderColor={visibility === "public" ? "amber.800" : "amber.200"}
+            _hover={{ bg: visibility === "public" ? "amber.800" : "amber.100" }}
           >
             Public — anyone
-          </button>
-        </div>
-      </fieldset>
+          </Button>
+        </Flex>
+      </Fieldset.Root>
 
       {mode === "freeform" ? (
-        <div className="flex flex-col gap-2">
-          <span className="text-sm font-medium text-stone-700">Your story</span>
+        <Flex direction="column" gap={2}>
+          <Text fontSize="sm" fontWeight="medium" color="stone.700">
+            Your story
+          </Text>
           <VoiceTextarea
             required
             rows={14}
@@ -96,32 +119,48 @@ export default function StoryForm({
             onChange={setContent}
             placeholder="Write your life story here, in your own words, or click the mic to speak it..."
           />
-        </div>
+        </Flex>
       ) : (
-        <div className="flex flex-col gap-6">
+        <Flex direction="column" gap={6}>
           {questions.map((q) => (
-            <div key={q.id} className="flex flex-col gap-2">
-              <span className="text-sm font-medium text-stone-700">{q.prompt}</span>
+            <Flex key={q.id} direction="column" gap={2}>
+              <Text fontSize="sm" fontWeight="medium" color="stone.700">
+                {q.prompt}
+              </Text>
               <VoiceTextarea
                 rows={4}
                 value={answers[q.id] ?? ""}
                 onChange={(text) => setAnswers((prev) => ({ ...prev, [q.id]: text }))}
                 placeholder="Answer in your own time, by typing or speaking — you can leave this blank"
               />
-            </div>
+            </Flex>
           ))}
-        </div>
+        </Flex>
       )}
 
-      {error && <p className="text-red-600 text-sm">{error}</p>}
+      {error && (
+        <Text color="red.600" fontSize="sm">
+          {error}
+        </Text>
+      )}
 
-      <button
-        type="submit"
-        disabled={submitting}
-        className="self-start bg-amber-800 text-amber-50 px-6 py-3 rounded-full font-medium hover:bg-amber-900 transition-colors disabled:opacity-60"
-      >
-        {submitting ? "Saving..." : submitLabel}
-      </button>
-    </form>
+      <Box>
+        <Button
+          type="submit"
+          disabled={submitting}
+          bg="amber.800"
+          color="amber.50"
+          borderRadius="full"
+          fontWeight="medium"
+          px={6}
+          py={3}
+          h="auto"
+          _hover={{ bg: "amber.900" }}
+          _disabled={{ opacity: 0.6 }}
+        >
+          {submitting ? "Saving..." : submitLabel}
+        </Button>
+      </Box>
+    </Flex>
   );
 }

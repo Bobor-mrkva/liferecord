@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Box } from "@chakra-ui/react";
 import { AuthProvider } from "@/context/AuthContext";
+import { Provider } from "@/components/ui/provider";
 import NavBar from "@/components/NavBar";
 import "./globals.css";
 
@@ -25,15 +27,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <AuthProvider>
-          <NavBar />
-          {children}
-        </AuthProvider>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
+        <Provider>
+          <AuthProvider>
+            <Box minH="100vh" display="flex" flexDirection="column">
+              <NavBar />
+              {children}
+            </Box>
+          </AuthProvider>
+        </Provider>
       </body>
     </html>
   );

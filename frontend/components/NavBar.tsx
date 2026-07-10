@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import NextLink from "next/link";
+import { Box, Button, Flex, Link } from "@chakra-ui/react";
 import { useAuth } from "@/context/AuthContext";
 import AccountMenu from "@/components/AccountMenu";
 
@@ -8,35 +9,43 @@ export default function NavBar() {
   const { user, loading } = useAuth();
 
   return (
-    <nav className="flex items-center justify-between px-8 py-5 bg-amber-100 border-b border-amber-300">
-      <Link href="/" className="text-2xl font-semibold tracking-tight text-amber-900">
-        Liferecord
+    <Flex
+      as="nav"
+      align="center"
+      justify="space-between"
+      px={8}
+      py={5}
+      bg="amber.100"
+      borderBottom="1px solid"
+      borderColor="amber.300"
+    >
+      <Link asChild fontSize="2xl" fontWeight="semibold" letterSpacing="tight" color="amber.900">
+        <NextLink href="/">Liferecord</NextLink>
       </Link>
-      <div className="flex gap-4 text-sm items-center">
-        <Link href="/stories" className="text-stone-600 hover:text-amber-900 transition-colors">
-          Read stories
+      <Flex gap={4} fontSize="sm" align="center">
+        <Link asChild color="stone.600" _hover={{ color: "amber.900" }} transition="color 0.2s">
+          <NextLink href="/stories">Read stories</NextLink>
         </Link>
         {loading ? null : user ? (
           <>
-            <Link href="/dashboard" className="text-stone-600 hover:text-amber-900 transition-colors">
-              My stories
+            <Link asChild color="stone.600" _hover={{ color: "amber.900" }} transition="color 0.2s">
+              <NextLink href="/dashboard">My stories</NextLink>
             </Link>
             <AccountMenu />
           </>
         ) : (
           <>
-            <Link href="/login" className="text-stone-600 hover:text-amber-900 transition-colors">
-              Log in
+            <Link asChild color="stone.600" _hover={{ color: "amber.900" }} transition="color 0.2s">
+              <NextLink href="/login">Log in</NextLink>
             </Link>
-            <Link
-              href="/signup"
-              className="bg-amber-800 text-amber-50 px-4 py-2 rounded-full hover:bg-amber-900 transition-colors"
-            >
-              Start sharing
-            </Link>
+            <Button asChild bg="amber.800" color="amber.50" borderRadius="full" _hover={{ bg: "amber.900" }}>
+              <NextLink href="/signup">
+                <Box as="span">Start sharing</Box>
+              </NextLink>
+            </Button>
           </>
         )}
-      </div>
-    </nav>
+      </Flex>
+    </Flex>
   );
 }

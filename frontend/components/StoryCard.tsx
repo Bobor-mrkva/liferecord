@@ -1,4 +1,5 @@
-import Link from "next/link";
+import NextLink from "next/link";
+import { Box, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import { Story } from "@/lib/api";
 
 export default function StoryCard({
@@ -15,24 +16,46 @@ export default function StoryCard({
 
   return (
     <Link
-      href={`/stories/${story.id}`}
-      className="block bg-white border border-amber-200 rounded-2xl p-6 hover:border-amber-400 transition-colors"
+      asChild
+      display="block"
+      bg="white"
+      border="1px solid"
+      borderColor="amber.200"
+      borderRadius="2xl"
+      p={6}
+      _hover={{ borderColor: "amber.400" }}
+      transition="border-color 0.2s"
     >
-      <div className="flex items-center gap-2 mb-2">
-        <h3 className="text-xl font-semibold text-stone-900">{story.title}</h3>
-        {showVisibility && (
-          <span
-            className={`text-xs px-2 py-0.5 rounded-full ${
-              story.visibility === "public"
-                ? "bg-amber-100 text-amber-800"
-                : "bg-stone-100 text-stone-600"
-            }`}
-          >
-            {story.visibility}
-          </span>
-        )}
-      </div>
-      <p className="text-stone-500 text-sm line-clamp-3">{preview}</p>
+      <NextLink href={`/stories/${story.id}`}>
+        <Flex align="center" gap={2} mb={2}>
+          <Heading as="h3" fontSize="xl" fontWeight="semibold" color="stone.900">
+            {story.title}
+          </Heading>
+          {showVisibility && (
+            <Box
+              as="span"
+              fontSize="xs"
+              px={2}
+              py={0.5}
+              borderRadius="full"
+              bg={story.visibility === "public" ? "amber.100" : "stone.100"}
+              color={story.visibility === "public" ? "amber.800" : "stone.600"}
+            >
+              {story.visibility}
+            </Box>
+          )}
+        </Flex>
+        <Text
+          color="stone.500"
+          fontSize="sm"
+          overflow="hidden"
+          textOverflow="ellipsis"
+          display="-webkit-box"
+          css={{ WebkitLineClamp: 3, WebkitBoxOrient: "vertical" }}
+        >
+          {preview}
+        </Text>
+      </NextLink>
     </Link>
   );
 }
