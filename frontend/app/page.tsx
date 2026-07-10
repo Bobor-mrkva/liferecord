@@ -1,24 +1,14 @@
+"use client";
+
+import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
+
 export default function Home() {
+  const { user } = useAuth();
+  const writeHref = user ? "/stories/new" : "/signup";
+
   return (
     <main className="flex flex-col min-h-screen bg-amber-50 text-stone-800 font-[family-name:var(--font-geist-sans)]">
-      {/* Nav */}
-      <nav className="flex items-center justify-between px-8 py-5 border-b border-amber-200">
-        <span className="text-2xl font-semibold tracking-tight text-amber-900">
-          Liferecord
-        </span>
-        <div className="flex gap-4 text-sm items-center">
-          <a href="#how-it-works" className="text-stone-600 hover:text-amber-900 transition-colors">
-            How it works
-          </a>
-          <a
-            href="#join"
-            className="bg-amber-800 text-amber-50 px-4 py-2 rounded-full hover:bg-amber-900 transition-colors"
-          >
-            Start sharing
-          </a>
-        </div>
-      </nav>
-
       {/* Hero */}
       <section className="flex flex-col items-center text-center px-6 py-24 gap-6 max-w-3xl mx-auto">
         <span className="text-sm font-medium tracking-widest uppercase text-amber-700">
@@ -32,19 +22,18 @@ export default function Home() {
           stories — for family, for the world, and for generations to come.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 mt-4">
-          <a
-            id="join"
-            href="#"
+          <Link
+            href={writeHref}
             className="bg-amber-800 text-amber-50 px-7 py-3 rounded-full text-base font-medium hover:bg-amber-900 transition-colors"
           >
-            Share your story
-          </a>
-          <a
-            href="#"
+            Write your story
+          </Link>
+          <Link
+            href="/stories"
             className="border border-amber-800 text-amber-800 px-7 py-3 rounded-full text-base font-medium hover:bg-amber-100 transition-colors"
           >
             Read stories
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -105,12 +94,12 @@ export default function Home() {
         <p className="text-amber-200 mb-8 max-w-md mx-auto">
           Join Liferecord today and start turning your memories into stories that last.
         </p>
-        <a
-          href="#"
+        <Link
+          href={writeHref}
           className="bg-amber-50 text-amber-900 px-8 py-3 rounded-full font-medium hover:bg-white transition-colors"
         >
           Get started — it&apos;s free
-        </a>
+        </Link>
       </section>
 
       {/* Footer */}
