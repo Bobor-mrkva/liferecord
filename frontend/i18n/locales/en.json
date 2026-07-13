@@ -1,0 +1,231 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "loading": "Loading…",
+    "somethingWentWrong": "Something went wrong",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
+  },
+  "nav": {
+    "familyTree": "Family tree",
+    "readStories": "Read stories",
+    "myStories": "My stories",
+    "login": "Log in",
+    "startSharing": "Start sharing"
+  },
+  "accountMenu": {
+    "settings": "Settings",
+    "logout": "Log out",
+    "lifeStoriesOne": "{count} life story written",
+    "lifeStoriesOther": "{count} life stories written",
+    "lessonsOne": "{count} lesson learned shared",
+    "lessonsOther": "{count} lessons learned shared",
+    "viewsOne": "{count} person has read your stories",
+    "viewsOther": "{count} people have read your stories"
+  },
+  "auth": {
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "passwordLabel": "Password",
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Log in to continue your story.",
+      "passwordPlaceholder": "Your password",
+      "forgotPassword": "Forgot your password?",
+      "submit": "Log in",
+      "submitting": "Logging in…",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "signup": {
+      "title": "Create your account",
+      "subtitle": "Start writing your story today. It only takes a minute.",
+      "nameLabel": "Your name",
+      "namePlaceholder": "Jane Doe",
+      "passwordPlaceholder": "At least 8 characters",
+      "confirmPasswordLabel": "Confirm password",
+      "confirmPasswordPlaceholder": "Type your password again",
+      "submit": "Create account",
+      "submitting": "Creating account…",
+      "haveAccount": "Already have an account?",
+      "logIn": "Log in",
+      "passwordMismatch": "Passwords don't match — please check both fields."
+    },
+    "forgotPassword": {
+      "title": "Reset your password",
+      "subtitle": "Enter your email and we'll send you a link to choose a new password.",
+      "submit": "Send reset link",
+      "submitting": "Sending…",
+      "sent": "If an account exists for that email, we've sent a reset link. Check your inbox.",
+      "backToLogin": "Back to login"
+    },
+    "resetPassword": {
+      "title": "Choose a new password",
+      "subtitle": "Enter a new password for your account.",
+      "newPasswordLabel": "New password",
+      "newPasswordPlaceholder": "At least 8 characters",
+      "confirmNewPasswordLabel": "Confirm new password",
+      "confirmNewPasswordPlaceholder": "Re-enter your new password",
+      "submit": "Set new password",
+      "submitting": "Saving…",
+      "mismatch": "Passwords don't match",
+      "invalidLink": "This reset link is invalid or has expired.",
+      "requestNewLink": "Request a new link",
+      "backToLogin": "Back to login"
+    }
+  },
+  "settings": {
+    "title": "Account settings",
+    "nameSectionTitle": "Your name",
+    "nameSectionSubtitle": "You can change your name once every 24 hours.",
+    "nameSaved": "Name updated.",
+    "saveName": "Save name",
+    "saving": "Saving…",
+    "nameCooldown": "You can change your name again in {duration}.",
+    "passwordSectionTitle": "Password",
+    "passwordSectionSubtitle": "You can change your password once every 5 minutes.",
+    "currentPasswordLabel": "Current password",
+    "currentPasswordPlaceholder": "Your current password",
+    "newPasswordLabel": "New password",
+    "newPasswordPlaceholder": "At least 8 characters",
+    "confirmNewPasswordLabel": "Confirm new password",
+    "confirmNewPasswordPlaceholder": "Type your new password again",
+    "passwordSaved": "Password updated.",
+    "changePassword": "Change password",
+    "passwordCooldown": "You can change your password again in {duration}.",
+    "passwordMismatch": "New passwords don't match — please check both fields."
+  },
+  "storyForm": {
+    "titleLabel": "Title",
+    "titlePlaceholder": "Give your story a title",
+    "visibilityLegend": "Who can see this?",
+    "visibilityPrivate": "Private — only me",
+    "visibilityPublic": "Public — anyone",
+    "creditLegend": "Who gets credit?",
+    "showName": "Show my name",
+    "postAnonymously": "Post anonymously",
+    "yourStoryLabel": "Your story",
+    "yourStoryPlaceholder": "Write your life story here, in your own words, or click the mic to speak it...",
+    "answerPlaceholder": "Answer in your own time, by typing or speaking — you can leave this blank",
+    "saving": "Saving…",
+    "assistButton": "Get writing help",
+    "assistLoading": "Thinking…",
+    "assistUnavailable": "Writing help isn't available right now.",
+    "assistError": "Something went wrong — please try again.",
+    "assistAccept": "Add to my story",
+    "chronoLegend": "Story order",
+    "chronoButton": "Put this story in chronological order",
+    "chronoLoading": "Reading your story…",
+    "chronoUnavailable": "This isn't available right now.",
+    "chronoError": "Something went wrong — please try again.",
+    "chronoDone": "Done — your story has been reordered."
+  },
+  "voiceTextarea": {
+    "startVoiceInput": "Start voice input",
+    "stopVoiceInput": "Stop voice input",
+    "speakInstead": "Speak instead of typing",
+    "notSupported": "Voice input isn't available in this browser — please type instead.",
+    "listening": "Listening... speak your answer, then click the mic to stop.",
+    "cleanupButton": "Clean up my words with AI",
+    "cleanupLoading": "Cleaning up…",
+    "cleanupUnavailable": "This isn't available right now.",
+    "cleanupError": "Something went wrong — please try again.",
+    "cleanupAccept": "Use this version"
+  },
+  "storyTypeTabs": {
+    "lifeStories": "Life stories",
+    "lessonsLearned": "Lessons learned"
+  },
+  "storyCard": {
+    "by": "by {name}",
+    "anonymous": "Anonymous"
+  },
+  "myStoriesList": {
+    "welcomeBack": "Welcome back, {name}.",
+    "downloadAllPdf": "Download all as PDF",
+    "newStory": "+ New story",
+    "view": "View",
+    "edit": "Edit",
+    "export": "Export",
+    "delete": "Delete",
+    "deleting": "Deleting…",
+    "anonymous": "anonymous",
+    "publicBadge": "public",
+    "privateBadge": "private",
+    "confirmDelete": "Delete this story? This can't be undone.",
+    "startFirstOne": "Start your first one"
+  },
+  "dashboard": {
+    "lifeStoriesHeading": "My life stories",
+    "lifeStoriesEmpty": "You haven't written any life stories yet.",
+    "lessonsHeading": "My lessons learned",
+    "lessonsEmpty": "You haven't written any lessons learned yet."
+  },
+  "publicStories": {
+    "lifeStoriesTitle": "Life stories from our community",
+    "lifeStoriesSubtitle": "Free-form life stories, shared publicly.",
+    "lifeStoriesEmpty": "No public life stories yet. Be the first to share yours.",
+    "lessonsTitle": "Lessons learned from our community",
+    "lessonsSubtitle": "Reflective answers people have shared publicly.",
+    "lessonsEmpty": "No public lessons yet. Be the first to share yours."
+  },
+  "storyPage": {
+    "privateOrMissing": "This story is private or doesn't exist.",
+    "backToStories": "Back to stories",
+    "downloadPdf": "Download PDF",
+    "edit": "Edit",
+    "translate": "Translate",
+    "showOriginal": "Show original",
+    "translating": "Translating…",
+    "translateUnavailable": "Translation isn't available right now"
+  },
+  "newStory": {
+    "title": "Write a new story",
+    "subtitle": "Choose how you'd like to share, then write at your own pace.",
+    "freeformTitle": "Free-form life story",
+    "freeformDesc": "Write your story in your own words, at your own pace.",
+    "questionsTitle": "Lessons learned",
+    "questionsDesc": "Answer a few reflective questions to help others learn from your experience.",
+    "familyTreeTitle": "Family tree",
+    "familyTreeDesc": "Add relatives as bubbles and connect them to build out your family tree.",
+    "chooseDifferentWay": "← Choose a different way to write",
+    "publish": "Publish story"
+  },
+  "editStory": {
+    "title": "Edit story",
+    "notFound": "This story doesn't exist or isn't yours to edit.",
+    "saveChanges": "Save changes"
+  },
+  "home": {
+    "eyebrow": "Every life is a story worth telling",
+    "heroTitleLine1": "Your memories deserve",
+    "heroTitleLine2": "to live on",
+    "heroSubtitle": "Liferecord is a warm, simple place where people can write and share their life stories — for family, for the world, and for generations to come.",
+    "writeYourStory": "Write your story",
+    "readStories": "Read stories",
+    "feature1Title": "Write simply",
+    "feature1Desc": "No complicated tools. Just a clean page where you can type your memories at your own pace.",
+    "feature2Title": "Share with family",
+    "feature2Desc": "Send a link to loved ones so they can read, comment, and treasure your stories forever.",
+    "feature3Title": "Preserved forever",
+    "feature3Desc": "Your stories are safely stored and available to those you choose, now and in the future.",
+    "howItWorks": "How it works",
+    "step1Title": "Create an account",
+    "step1Desc": "Sign up in seconds — no complicated setup needed.",
+    "step2Title": "Write a memory",
+    "step2Desc": "Use our gentle editor to write a story, big or small.",
+    "step3Title": "Share it",
+    "step3Desc": "Choose who can read it — family only, or the whole world.",
+    "ctaTitle": "Ready to begin?",
+    "ctaSubtitle": "Join Liferecord today and start turning your memories into stories that last.",
+    "ctaButton": "Get started — it's free",
+    "footer": "© {year} Liferecord. Built with care."
+  },
+  "themeMode": {
+    "ariaLabel": "Change theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "common": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "loading": "Wird geladen…",
+    "somethingWentWrong": "Etwas ist schiefgelaufen",
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort verbergen"
+  },
+  "nav": {
+    "familyTree": "Stammbaum",
+    "readStories": "Geschichten lesen",
+    "myStories": "Meine Geschichten",
+    "login": "Anmelden",
+    "startSharing": "Jetzt teilen"
+  },
+  "accountMenu": {
+    "settings": "Einstellungen",
+    "logout": "Abmelden",
+    "lifeStoriesOne": "{count} Lebensgeschichte geschrieben",
+    "lifeStoriesOther": "{count} Lebensgeschichten geschrieben",
+    "lessonsOne": "{count} Lebenslektion geteilt",
+    "lessonsOther": "{count} Lebenslektionen geteilt",
+    "viewsOne": "{count} Person hat deine Geschichten gelesen",
+    "viewsOther": "{count} Personen haben deine Geschichten gelesen"
+  },
+  "auth": {
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "du@beispiel.de",
+    "passwordLabel": "Passwort",
+    "login": {
+      "title": "Willkommen zurück",
+      "subtitle": "Melde dich an, um deine Geschichte fortzusetzen.",
+      "passwordPlaceholder": "Dein Passwort",
+      "forgotPassword": "Passwort vergessen?",
+      "submit": "Anmelden",
+      "submitting": "Anmeldung läuft…",
+      "noAccount": "Noch kein Konto?",
+      "signUp": "Registrieren"
+    },
+    "signup": {
+      "title": "Erstelle dein Konto",
+      "subtitle": "Beginne noch heute, deine Geschichte zu schreiben. Es dauert nur eine Minute.",
+      "nameLabel": "Dein Name",
+      "namePlaceholder": "Anna Beispiel",
+      "passwordPlaceholder": "Mindestens 8 Zeichen",
+      "confirmPasswordLabel": "Passwort bestätigen",
+      "confirmPasswordPlaceholder": "Passwort erneut eingeben",
+      "submit": "Konto erstellen",
+      "submitting": "Konto wird erstellt…",
+      "haveAccount": "Du hast bereits ein Konto?",
+      "logIn": "Anmelden",
+      "passwordMismatch": "Die Passwörter stimmen nicht überein — bitte beide Felder prüfen."
+    },
+    "forgotPassword": {
+      "title": "Passwort zurücksetzen",
+      "subtitle": "Gib deine E-Mail-Adresse ein und wir senden dir einen Link zum Festlegen eines neuen Passworts.",
+      "submit": "Link senden",
+      "submitting": "Wird gesendet…",
+      "sent": "Falls ein Konto mit dieser E-Mail existiert, haben wir einen Link zum Zurücksetzen gesendet. Prüfe dein Postfach.",
+      "backToLogin": "Zurück zur Anmeldung"
+    },
+    "resetPassword": {
+      "title": "Neues Passwort wählen",
+      "subtitle": "Gib ein neues Passwort für dein Konto ein.",
+      "newPasswordLabel": "Neues Passwort",
+      "newPasswordPlaceholder": "Mindestens 8 Zeichen",
+      "confirmNewPasswordLabel": "Neues Passwort bestätigen",
+      "confirmNewPasswordPlaceholder": "Neues Passwort erneut eingeben",
+      "submit": "Neues Passwort festlegen",
+      "submitting": "Wird gespeichert…",
+      "mismatch": "Die Passwörter stimmen nicht überein",
+      "invalidLink": "Dieser Link zum Zurücksetzen ist ungültig oder abgelaufen.",
+      "requestNewLink": "Neuen Link anfordern",
+      "backToLogin": "Zurück zur Anmeldung"
+    }
+  },
+  "settings": {
+    "title": "Kontoeinstellungen",
+    "nameSectionTitle": "Dein Name",
+    "nameSectionSubtitle": "Du kannst deinen Namen einmal alle 24 Stunden ändern.",
+    "nameSaved": "Name aktualisiert.",
+    "saveName": "Namen speichern",
+    "saving": "Wird gespeichert…",
+    "nameCooldown": "Du kannst deinen Namen in {duration} erneut ändern.",
+    "passwordSectionTitle": "Passwort",
+    "passwordSectionSubtitle": "Du kannst dein Passwort einmal alle 5 Minuten ändern.",
+    "currentPasswordLabel": "Aktuelles Passwort",
+    "currentPasswordPlaceholder": "Dein aktuelles Passwort",
+    "newPasswordLabel": "Neues Passwort",
+    "newPasswordPlaceholder": "Mindestens 8 Zeichen",
+    "confirmNewPasswordLabel": "Neues Passwort bestätigen",
+    "confirmNewPasswordPlaceholder": "Neues Passwort erneut eingeben",
+    "passwordSaved": "Passwort aktualisiert.",
+    "changePassword": "Passwort ändern",
+    "passwordCooldown": "Du kannst dein Passwort in {duration} erneut ändern.",
+    "passwordMismatch": "Die neuen Passwörter stimmen nicht überein — bitte beide Felder prüfen."
+  },
+  "storyForm": {
+    "titleLabel": "Titel",
+    "titlePlaceholder": "Gib deiner Geschichte einen Titel",
+    "visibilityLegend": "Wer kann das sehen?",
+    "visibilityPrivate": "Privat — nur ich",
+    "visibilityPublic": "Öffentlich — alle",
+    "creditLegend": "Wer wird genannt?",
+    "showName": "Meinen Namen anzeigen",
+    "postAnonymously": "Anonym veröffentlichen",
+    "yourStoryLabel": "Deine Geschichte",
+    "yourStoryPlaceholder": "Schreibe hier deine Lebensgeschichte in deinen eigenen Worten oder klicke auf das Mikrofon, um sie zu sprechen...",
+    "answerPlaceholder": "Antworte in deinem eigenen Tempo, per Tippen oder Sprechen — du kannst das Feld auch leer lassen",
+    "saving": "Wird gespeichert…",
+    "assistButton": "Schreibhilfe holen",
+    "assistLoading": "Überlegt…",
+    "assistUnavailable": "Schreibhilfe ist derzeit nicht verfügbar.",
+    "assistError": "Etwas ist schiefgelaufen — bitte versuche es erneut.",
+    "assistAccept": "Zu meiner Geschichte hinzufügen",
+    "chronoLegend": "Reihenfolge der Geschichte",
+    "chronoButton": "Diese Geschichte in chronologische Reihenfolge bringen",
+    "chronoLoading": "Deine Geschichte wird gelesen…",
+    "chronoUnavailable": "Dies ist derzeit nicht verfügbar.",
+    "chronoError": "Etwas ist schiefgelaufen — bitte versuche es erneut.",
+    "chronoDone": "Fertig — deine Geschichte wurde neu geordnet."
+  },
+  "voiceTextarea": {
+    "startVoiceInput": "Spracheingabe starten",
+    "stopVoiceInput": "Spracheingabe stoppen",
+    "speakInstead": "Statt Tippen sprechen",
+    "notSupported": "Spracheingabe ist in diesem Browser nicht verfügbar — bitte stattdessen tippen.",
+    "listening": "Höre zu... sprich deine Antwort und klicke dann auf das Mikrofon, um zu stoppen.",
+    "cleanupButton": "Meine Worte mit KI bereinigen",
+    "cleanupLoading": "Wird bereinigt…",
+    "cleanupUnavailable": "Dies ist derzeit nicht verfügbar.",
+    "cleanupError": "Etwas ist schiefgelaufen — bitte versuche es erneut.",
+    "cleanupAccept": "Diese Version verwenden"
+  },
+  "storyTypeTabs": {
+    "lifeStories": "Lebensgeschichten",
+    "lessonsLearned": "Lebenslektionen"
+  },
+  "storyCard": {
+    "by": "von {name}",
+    "anonymous": "Anonym"
+  },
+  "myStoriesList": {
+    "welcomeBack": "Willkommen zurück, {name}.",
+    "downloadAllPdf": "Alle als PDF herunterladen",
+    "newStory": "+ Neue Geschichte",
+    "view": "Ansehen",
+    "edit": "Bearbeiten",
+    "export": "Exportieren",
+    "delete": "Löschen",
+    "deleting": "Wird gelöscht…",
+    "anonymous": "anonym",
+    "publicBadge": "öffentlich",
+    "privateBadge": "privat",
+    "confirmDelete": "Diese Geschichte löschen? Das kann nicht rückgängig gemacht werden.",
+    "startFirstOne": "Beginne deine erste"
+  },
+  "dashboard": {
+    "lifeStoriesHeading": "Meine Lebensgeschichten",
+    "lifeStoriesEmpty": "Du hast noch keine Lebensgeschichte geschrieben.",
+    "lessonsHeading": "Meine Lebenslektionen",
+    "lessonsEmpty": "Du hast noch keine Lebenslektion geschrieben."
+  },
+  "publicStories": {
+    "lifeStoriesTitle": "Lebensgeschichten aus unserer Gemeinschaft",
+    "lifeStoriesSubtitle": "Frei geschriebene Lebensgeschichten, öffentlich geteilt.",
+    "lifeStoriesEmpty": "Noch keine öffentlichen Lebensgeschichten. Sei die/der Erste, die/der ihre teilt.",
+    "lessonsTitle": "Lebenslektionen aus unserer Gemeinschaft",
+    "lessonsSubtitle": "Nachdenkliche Antworten, die öffentlich geteilt wurden.",
+    "lessonsEmpty": "Noch keine öffentlichen Lektionen. Sei die/der Erste, die/der ihre teilt."
+  },
+  "storyPage": {
+    "privateOrMissing": "Diese Geschichte ist privat oder existiert nicht.",
+    "backToStories": "Zurück zu den Geschichten",
+    "downloadPdf": "PDF herunterladen",
+    "edit": "Bearbeiten",
+    "translate": "Übersetzen",
+    "showOriginal": "Original anzeigen",
+    "translating": "Wird übersetzt…",
+    "translateUnavailable": "Übersetzung ist gerade nicht verfügbar"
+  },
+  "newStory": {
+    "title": "Neue Geschichte schreiben",
+    "subtitle": "Wähle, wie du teilen möchtest, und schreibe dann in deinem eigenen Tempo.",
+    "freeformTitle": "Frei geschriebene Lebensgeschichte",
+    "freeformDesc": "Schreibe deine Geschichte in deinen eigenen Worten, in deinem eigenen Tempo.",
+    "questionsTitle": "Lebenslektionen",
+    "questionsDesc": "Beantworte ein paar nachdenkliche Fragen, damit andere aus deiner Erfahrung lernen können.",
+    "familyTreeTitle": "Stammbaum",
+    "familyTreeDesc": "Füge Verwandte als Blasen hinzu und verbinde sie, um deinen Stammbaum aufzubauen.",
+    "chooseDifferentWay": "← Andere Schreibweise wählen",
+    "publish": "Geschichte veröffentlichen"
+  },
+  "editStory": {
+    "title": "Geschichte bearbeiten",
+    "notFound": "Diese Geschichte existiert nicht oder gehört dir nicht zum Bearbeiten.",
+    "saveChanges": "Änderungen speichern"
+  },
+  "home": {
+    "eyebrow": "Jedes Leben ist eine Geschichte, die es wert ist, erzählt zu werden",
+    "heroTitleLine1": "Ihre Erinnerungen verdienen es,",
+    "heroTitleLine2": "weiterzuleben",
+    "heroSubtitle": "Liferecord ist ein warmer, einfacher Ort, an dem Menschen ihre Lebensgeschichte schreiben und teilen können — für die Familie, für die Welt und für kommende Generationen.",
+    "writeYourStory": "Schreiben Sie Ihre Geschichte",
+    "readStories": "Geschichten lesen",
+    "feature1Title": "Einfach schreiben",
+    "feature1Desc": "Keine komplizierten Werkzeuge. Nur eine klare Seite, auf der Sie Ihre Erinnerungen in Ihrem eigenen Tempo festhalten können.",
+    "feature2Title": "Mit der Familie teilen",
+    "feature2Desc": "Senden Sie Ihren Liebsten einen Link, damit sie Ihre Geschichten lesen, kommentieren und für immer schätzen können.",
+    "feature3Title": "Für immer bewahrt",
+    "feature3Desc": "Ihre Geschichten werden sicher gespeichert und stehen den von Ihnen gewählten Personen jetzt und in Zukunft zur Verfügung.",
+    "howItWorks": "So funktioniert es",
+    "step1Title": "Konto erstellen",
+    "step1Desc": "Registrieren Sie sich in Sekunden — keine komplizierte Einrichtung nötig.",
+    "step2Title": "Eine Erinnerung schreiben",
+    "step2Desc": "Nutzen Sie unseren sanften Editor, um eine Geschichte zu schreiben, groß oder klein.",
+    "step3Title": "Teilen Sie sie",
+    "step3Desc": "Wählen Sie, wer sie lesen darf — nur die Familie oder die ganze Welt.",
+    "ctaTitle": "Bereit anzufangen?",
+    "ctaSubtitle": "Treten Sie Liferecord noch heute bei und verwandeln Sie Ihre Erinnerungen in Geschichten, die bleiben.",
+    "ctaButton": "Loslegen — kostenlos",
+    "footer": "© {year} Liferecord. Mit Sorgfalt gestaltet."
+  },
+  "themeMode": {
+    "ariaLabel": "Design ändern",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System"
+  }
+}

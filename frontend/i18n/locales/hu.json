@@ -1,0 +1,231 @@
+{
+  "common": {
+    "save": "Mentés",
+    "cancel": "Mégse",
+    "loading": "Betöltés…",
+    "somethingWentWrong": "Valami hiba történt",
+    "showPassword": "Jelszó megjelenítése",
+    "hidePassword": "Jelszó elrejtése"
+  },
+  "nav": {
+    "familyTree": "Családfa",
+    "readStories": "Történetek olvasása",
+    "myStories": "Saját történeteim",
+    "login": "Bejelentkezés",
+    "startSharing": "Kezdjünk el megosztani"
+  },
+  "accountMenu": {
+    "settings": "Beállítások",
+    "logout": "Kijelentkezés",
+    "lifeStoriesOne": "{count} életút megírva",
+    "lifeStoriesOther": "{count} életút megírva",
+    "lessonsOne": "{count} tanulság megosztva",
+    "lessonsOther": "{count} tanulság megosztva",
+    "viewsOne": "{count} ember olvasta a történeteidet",
+    "viewsOther": "{count} ember olvasta a történeteidet"
+  },
+  "auth": {
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "te@example.com",
+    "passwordLabel": "Jelszó",
+    "login": {
+      "title": "Üdvözlünk újra",
+      "subtitle": "Jelentkezz be, hogy folytasd a történeted.",
+      "passwordPlaceholder": "A jelszavad",
+      "forgotPassword": "Elfelejtetted a jelszavad?",
+      "submit": "Bejelentkezés",
+      "submitting": "Bejelentkezés…",
+      "noAccount": "Még nincs fiókod?",
+      "signUp": "Regisztráció"
+    },
+    "signup": {
+      "title": "Fiók létrehozása",
+      "subtitle": "Kezdd el megírni a történeted még ma. Csak egy percet vesz igénybe.",
+      "nameLabel": "A neved",
+      "namePlaceholder": "Kovács Anna",
+      "passwordPlaceholder": "Legalább 8 karakter",
+      "confirmPasswordLabel": "Jelszó megerősítése",
+      "confirmPasswordPlaceholder": "Írd be újra a jelszavadat",
+      "submit": "Fiók létrehozása",
+      "submitting": "Fiók létrehozása…",
+      "haveAccount": "Már van fiókod?",
+      "logIn": "Bejelentkezés",
+      "passwordMismatch": "A jelszavak nem egyeznek — kérjük, ellenőrizd mindkét mezőt."
+    },
+    "forgotPassword": {
+      "title": "Jelszó visszaállítása",
+      "subtitle": "Add meg az e-mail címedet, és küldünk egy linket, amivel új jelszót választhatsz.",
+      "submit": "Visszaállító link küldése",
+      "submitting": "Küldés…",
+      "sent": "Ha létezik fiók ezzel az e-mail címmel, elküldtük a visszaállító linket. Nézd meg a postaládádat.",
+      "backToLogin": "Vissza a bejelentkezéshez"
+    },
+    "resetPassword": {
+      "title": "Válassz új jelszót",
+      "subtitle": "Add meg a fiókod új jelszavát.",
+      "newPasswordLabel": "Új jelszó",
+      "newPasswordPlaceholder": "Legalább 8 karakter",
+      "confirmNewPasswordLabel": "Új jelszó megerősítése",
+      "confirmNewPasswordPlaceholder": "Írd be újra az új jelszavadat",
+      "submit": "Új jelszó beállítása",
+      "submitting": "Mentés…",
+      "mismatch": "A jelszavak nem egyeznek",
+      "invalidLink": "Ez a visszaállító link érvénytelen vagy lejárt.",
+      "requestNewLink": "Új link kérése",
+      "backToLogin": "Vissza a bejelentkezéshez"
+    }
+  },
+  "settings": {
+    "title": "Fiókbeállítások",
+    "nameSectionTitle": "A neved",
+    "nameSectionSubtitle": "24 óránként egyszer változtathatod meg a neved.",
+    "nameSaved": "Név frissítve.",
+    "saveName": "Név mentése",
+    "saving": "Mentés…",
+    "nameCooldown": "A nevedet legközelebb {duration} múlva változtathatod meg.",
+    "passwordSectionTitle": "Jelszó",
+    "passwordSectionSubtitle": "5 percenként egyszer változtathatod meg a jelszavad.",
+    "currentPasswordLabel": "Jelenlegi jelszó",
+    "currentPasswordPlaceholder": "A jelenlegi jelszavad",
+    "newPasswordLabel": "Új jelszó",
+    "newPasswordPlaceholder": "Legalább 8 karakter",
+    "confirmNewPasswordLabel": "Új jelszó megerősítése",
+    "confirmNewPasswordPlaceholder": "Írd be újra az új jelszavadat",
+    "passwordSaved": "Jelszó frissítve.",
+    "changePassword": "Jelszó módosítása",
+    "passwordCooldown": "A jelszavadat legközelebb {duration} múlva változtathatod meg.",
+    "passwordMismatch": "Az új jelszavak nem egyeznek — kérjük, ellenőrizd mindkét mezőt."
+  },
+  "storyForm": {
+    "titleLabel": "Cím",
+    "titlePlaceholder": "Adj címet a történetednek",
+    "visibilityLegend": "Ki láthatja ezt?",
+    "visibilityPrivate": "Privát — csak én",
+    "visibilityPublic": "Nyilvános — bárki",
+    "creditLegend": "Ki kapja a szerzőséget?",
+    "showName": "Mutassa a nevem",
+    "postAnonymously": "Névtelen közzététel",
+    "yourStoryLabel": "A történeted",
+    "yourStoryPlaceholder": "Írd meg itt az életutadat a saját szavaiddal, vagy kattints a mikrofonra, hogy elmondd...",
+    "answerPlaceholder": "Válaszolj a saját tempódban, gépeléssel vagy beszéddel — üresen is hagyhatod",
+    "saving": "Mentés…",
+    "assistButton": "Írási segítség kérése",
+    "assistLoading": "Gondolkodik…",
+    "assistUnavailable": "Az írási segítség jelenleg nem elérhető.",
+    "assistError": "Hiba történt — kérjük, próbáld újra.",
+    "assistAccept": "Hozzáadás a történetemhez",
+    "chronoLegend": "Történet sorrendje",
+    "chronoButton": "Tedd időrendi sorrendbe ezt a történetet",
+    "chronoLoading": "A történeted olvasása…",
+    "chronoUnavailable": "Ez jelenleg nem elérhető.",
+    "chronoError": "Hiba történt — kérjük, próbáld újra.",
+    "chronoDone": "Kész — a történeted átrendeztük."
+  },
+  "voiceTextarea": {
+    "startVoiceInput": "Hangbevitel indítása",
+    "stopVoiceInput": "Hangbevitel leállítása",
+    "speakInstead": "Beszélj gépelés helyett",
+    "notSupported": "A hangbevitel nem elérhető ebben a böngészőben — kérjük, gépelj helyette.",
+    "listening": "Hallgatás... mondd el a válaszod, majd kattints a mikrofonra a leállításhoz.",
+    "cleanupButton": "Szavaim rendbetétele AI-val",
+    "cleanupLoading": "Rendbetétel…",
+    "cleanupUnavailable": "Ez jelenleg nem elérhető.",
+    "cleanupError": "Hiba történt — kérjük, próbáld újra.",
+    "cleanupAccept": "Ezt a verziót használd"
+  },
+  "storyTypeTabs": {
+    "lifeStories": "Élettörténetek",
+    "lessonsLearned": "Tanulságok"
+  },
+  "storyCard": {
+    "by": "írta: {name}",
+    "anonymous": "Névtelen"
+  },
+  "myStoriesList": {
+    "welcomeBack": "Üdvözlünk újra, {name}.",
+    "downloadAllPdf": "Összes letöltése PDF-ként",
+    "newStory": "+ Új történet",
+    "view": "Megtekintés",
+    "edit": "Szerkesztés",
+    "export": "Exportálás",
+    "delete": "Törlés",
+    "deleting": "Törlés…",
+    "anonymous": "névtelen",
+    "publicBadge": "nyilvános",
+    "privateBadge": "privát",
+    "confirmDelete": "Törlöd ezt a történetet? Ez nem vonható vissza.",
+    "startFirstOne": "Kezdd el az elsőt"
+  },
+  "dashboard": {
+    "lifeStoriesHeading": "Élettörténeteim",
+    "lifeStoriesEmpty": "Még nem írtál élettörténetet.",
+    "lessonsHeading": "Tanulságaim",
+    "lessonsEmpty": "Még nem osztottál meg tanulságot."
+  },
+  "publicStories": {
+    "lifeStoriesTitle": "Közösségünk élettörténetei",
+    "lifeStoriesSubtitle": "Szabadon megírt élettörténetek, nyilvánosan megosztva.",
+    "lifeStoriesEmpty": "Még nincs nyilvános élettörténet. Legyél te az első, aki megosztja a sajátját.",
+    "lessonsTitle": "Közösségünk tanulságai",
+    "lessonsSubtitle": "Elgondolkodtató válaszok, amiket az emberek nyilvánosan megosztottak.",
+    "lessonsEmpty": "Még nincs nyilvános tanulság. Legyél te az első, aki megosztja a sajátját."
+  },
+  "storyPage": {
+    "privateOrMissing": "Ez a történet privát, vagy nem létezik.",
+    "backToStories": "Vissza a történetekhez",
+    "downloadPdf": "PDF letöltése",
+    "edit": "Szerkesztés",
+    "translate": "Fordítás",
+    "showOriginal": "Eredeti megjelenítése",
+    "translating": "Fordítás…",
+    "translateUnavailable": "A fordítás jelenleg nem elérhető"
+  },
+  "newStory": {
+    "title": "Új történet írása",
+    "subtitle": "Válaszd ki, hogyan szeretnéd megosztani, majd írj a saját tempódban.",
+    "freeformTitle": "Szabadon írt élettörténet",
+    "freeformDesc": "Írd meg a történeted a saját szavaiddal, a saját tempódban.",
+    "questionsTitle": "Tanulságok",
+    "questionsDesc": "Válaszolj néhány elgondolkodtató kérdésre, hogy másoknak segíts tanulni a tapasztalataidból.",
+    "familyTreeTitle": "Családfa",
+    "familyTreeDesc": "Adj hozzá rokonokat buborékként, és köss össze őket, hogy felépítsd a családfádat.",
+    "chooseDifferentWay": "← Válassz másik írási módot",
+    "publish": "Történet közzététele"
+  },
+  "editStory": {
+    "title": "Történet szerkesztése",
+    "notFound": "Ez a történet nem létezik, vagy nem a tiéd a szerkesztéshez.",
+    "saveChanges": "Változtatások mentése"
+  },
+  "home": {
+    "eyebrow": "Minden élet egy elmesélésre méltó történet",
+    "heroTitleLine1": "Az emlékeid megérdemlik,",
+    "heroTitleLine2": "hogy tovább éljenek",
+    "heroSubtitle": "A Liferecord egy meleg, egyszerű hely, ahol az emberek megírhatják és megoszthatják élettörténetüket — a családért, a világért, és az eljövendő nemzedékekért.",
+    "writeYourStory": "Írd meg a történeted",
+    "readStories": "Történetek olvasása",
+    "feature1Title": "Írj egyszerűen",
+    "feature1Desc": "Semmi bonyolult eszköz. Csak egy áttekinthető oldal, ahol a saját tempódban gépelheted le az emlékeidet.",
+    "feature2Title": "Oszd meg a családoddal",
+    "feature2Desc": "Küldj egy linket a szeretteidnek, hogy olvashassák, kommentálhassák, és örökre megőrizhessék a történeteidet.",
+    "feature3Title": "Örökre megőrizve",
+    "feature3Desc": "A történeteid biztonságban vannak, és elérhetők azok számára, akiket kiválasztasz, most és a jövőben is.",
+    "howItWorks": "Hogyan működik",
+    "step1Title": "Hozz létre egy fiókot",
+    "step1Desc": "Regisztrálj néhány másodperc alatt — nincs szükség bonyolult beállításokra.",
+    "step2Title": "Írj meg egy emléket",
+    "step2Desc": "Használd kíméletes szerkesztőnket egy nagyobb vagy kisebb történet megírásához.",
+    "step3Title": "Oszd meg",
+    "step3Desc": "Válaszd ki, ki olvashatja — csak a család, vagy az egész világ.",
+    "ctaTitle": "Készen állsz a kezdésre?",
+    "ctaSubtitle": "Csatlakozz a Liferecordhoz még ma, és kezdd el emlékeidet maradandó történetekké alakítani.",
+    "ctaButton": "Kezdjük — ingyenes",
+    "footer": "© {year} Liferecord. Gondos munkával készítve."
+  },
+  "themeMode": {
+    "ariaLabel": "Téma módosítása",
+    "light": "Világos",
+    "dark": "Sötét",
+    "system": "Rendszer"
+  }
+}

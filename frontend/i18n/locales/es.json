@@ -1,0 +1,231 @@
+{
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "loading": "Cargando…",
+    "somethingWentWrong": "Algo salió mal",
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña"
+  },
+  "nav": {
+    "familyTree": "Árbol genealógico",
+    "readStories": "Leer historias",
+    "myStories": "Mis historias",
+    "login": "Iniciar sesión",
+    "startSharing": "Empezar a compartir"
+  },
+  "accountMenu": {
+    "settings": "Configuración",
+    "logout": "Cerrar sesión",
+    "lifeStoriesOne": "{count} historia de vida escrita",
+    "lifeStoriesOther": "{count} historias de vida escritas",
+    "lessonsOne": "{count} lección de vida compartida",
+    "lessonsOther": "{count} lecciones de vida compartidas",
+    "viewsOne": "{count} persona ha leído tus historias",
+    "viewsOther": "{count} personas han leído tus historias"
+  },
+  "auth": {
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "passwordLabel": "Contraseña",
+    "login": {
+      "title": "Bienvenido de nuevo",
+      "subtitle": "Inicia sesión para continuar tu historia.",
+      "passwordPlaceholder": "Tu contraseña",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "submit": "Iniciar sesión",
+      "submitting": "Iniciando sesión…",
+      "noAccount": "¿No tienes una cuenta?",
+      "signUp": "Regístrate"
+    },
+    "signup": {
+      "title": "Crea tu cuenta",
+      "subtitle": "Empieza a escribir tu historia hoy mismo. Solo toma un minuto.",
+      "nameLabel": "Tu nombre",
+      "namePlaceholder": "Juana Pérez",
+      "passwordPlaceholder": "Al menos 8 caracteres",
+      "confirmPasswordLabel": "Confirmar contraseña",
+      "confirmPasswordPlaceholder": "Vuelve a escribir tu contraseña",
+      "submit": "Crear cuenta",
+      "submitting": "Creando cuenta…",
+      "haveAccount": "¿Ya tienes una cuenta?",
+      "logIn": "Iniciar sesión",
+      "passwordMismatch": "Las contraseñas no coinciden — revisa ambos campos."
+    },
+    "forgotPassword": {
+      "title": "Restablece tu contraseña",
+      "subtitle": "Ingresa tu correo y te enviaremos un enlace para elegir una nueva contraseña.",
+      "submit": "Enviar enlace",
+      "submitting": "Enviando…",
+      "sent": "Si existe una cuenta con ese correo, hemos enviado un enlace de restablecimiento. Revisa tu bandeja de entrada.",
+      "backToLogin": "Volver al inicio de sesión"
+    },
+    "resetPassword": {
+      "title": "Elige una nueva contraseña",
+      "subtitle": "Ingresa una nueva contraseña para tu cuenta.",
+      "newPasswordLabel": "Nueva contraseña",
+      "newPasswordPlaceholder": "Al menos 8 caracteres",
+      "confirmNewPasswordLabel": "Confirmar nueva contraseña",
+      "confirmNewPasswordPlaceholder": "Vuelve a escribir tu nueva contraseña",
+      "submit": "Establecer nueva contraseña",
+      "submitting": "Guardando…",
+      "mismatch": "Las contraseñas no coinciden",
+      "invalidLink": "Este enlace de restablecimiento no es válido o ha expirado.",
+      "requestNewLink": "Solicitar un nuevo enlace",
+      "backToLogin": "Volver al inicio de sesión"
+    }
+  },
+  "settings": {
+    "title": "Configuración de la cuenta",
+    "nameSectionTitle": "Tu nombre",
+    "nameSectionSubtitle": "Puedes cambiar tu nombre una vez cada 24 horas.",
+    "nameSaved": "Nombre actualizado.",
+    "saveName": "Guardar nombre",
+    "saving": "Guardando…",
+    "nameCooldown": "Podrás cambiar tu nombre de nuevo en {duration}.",
+    "passwordSectionTitle": "Contraseña",
+    "passwordSectionSubtitle": "Puedes cambiar tu contraseña una vez cada 5 minutos.",
+    "currentPasswordLabel": "Contraseña actual",
+    "currentPasswordPlaceholder": "Tu contraseña actual",
+    "newPasswordLabel": "Nueva contraseña",
+    "newPasswordPlaceholder": "Al menos 8 caracteres",
+    "confirmNewPasswordLabel": "Confirmar nueva contraseña",
+    "confirmNewPasswordPlaceholder": "Vuelve a escribir tu nueva contraseña",
+    "passwordSaved": "Contraseña actualizada.",
+    "changePassword": "Cambiar contraseña",
+    "passwordCooldown": "Podrás cambiar tu contraseña de nuevo en {duration}.",
+    "passwordMismatch": "Las nuevas contraseñas no coinciden — revisa ambos campos."
+  },
+  "storyForm": {
+    "titleLabel": "Título",
+    "titlePlaceholder": "Dale un título a tu historia",
+    "visibilityLegend": "¿Quién puede ver esto?",
+    "visibilityPrivate": "Privado — solo yo",
+    "visibilityPublic": "Público — cualquiera",
+    "creditLegend": "¿Quién recibe el crédito?",
+    "showName": "Mostrar mi nombre",
+    "postAnonymously": "Publicar de forma anónima",
+    "yourStoryLabel": "Tu historia",
+    "yourStoryPlaceholder": "Escribe tu historia de vida aquí, con tus propias palabras, o haz clic en el micrófono para dictarla...",
+    "answerPlaceholder": "Responde a tu propio ritmo, escribiendo o hablando — puedes dejarlo en blanco",
+    "saving": "Guardando…",
+    "assistButton": "Obtener ayuda para escribir",
+    "assistLoading": "Pensando…",
+    "assistUnavailable": "La ayuda de escritura no está disponible en este momento.",
+    "assistError": "Algo salió mal — por favor, inténtalo de nuevo.",
+    "assistAccept": "Añadir a mi historia",
+    "chronoLegend": "Orden de la historia",
+    "chronoButton": "Poner esta historia en orden cronológico",
+    "chronoLoading": "Leyendo tu historia…",
+    "chronoUnavailable": "Esto no está disponible en este momento.",
+    "chronoError": "Algo salió mal — por favor, inténtalo de nuevo.",
+    "chronoDone": "Listo — tu historia ha sido reordenada."
+  },
+  "voiceTextarea": {
+    "startVoiceInput": "Iniciar entrada de voz",
+    "stopVoiceInput": "Detener entrada de voz",
+    "speakInstead": "Hablar en lugar de escribir",
+    "notSupported": "La entrada de voz no está disponible en este navegador — escribe en su lugar.",
+    "listening": "Escuchando... di tu respuesta y luego haz clic en el micrófono para detener.",
+    "cleanupButton": "Limpiar mis palabras con IA",
+    "cleanupLoading": "Limpiando…",
+    "cleanupUnavailable": "Esto no está disponible en este momento.",
+    "cleanupError": "Algo salió mal — por favor, inténtalo de nuevo.",
+    "cleanupAccept": "Usar esta versión"
+  },
+  "storyTypeTabs": {
+    "lifeStories": "Historias de vida",
+    "lessonsLearned": "Lecciones de vida"
+  },
+  "storyCard": {
+    "by": "por {name}",
+    "anonymous": "Anónimo"
+  },
+  "myStoriesList": {
+    "welcomeBack": "Bienvenido de nuevo, {name}.",
+    "downloadAllPdf": "Descargar todo en PDF",
+    "newStory": "+ Nueva historia",
+    "view": "Ver",
+    "edit": "Editar",
+    "export": "Exportar",
+    "delete": "Eliminar",
+    "deleting": "Eliminando…",
+    "anonymous": "anónimo",
+    "publicBadge": "público",
+    "privateBadge": "privado",
+    "confirmDelete": "¿Eliminar esta historia? Esto no se puede deshacer.",
+    "startFirstOne": "Empieza la primera"
+  },
+  "dashboard": {
+    "lifeStoriesHeading": "Mis historias de vida",
+    "lifeStoriesEmpty": "Aún no has escrito ninguna historia de vida.",
+    "lessonsHeading": "Mis lecciones de vida",
+    "lessonsEmpty": "Aún no has escrito ninguna lección de vida."
+  },
+  "publicStories": {
+    "lifeStoriesTitle": "Historias de vida de nuestra comunidad",
+    "lifeStoriesSubtitle": "Historias de vida libres, compartidas públicamente.",
+    "lifeStoriesEmpty": "Aún no hay historias de vida públicas. Sé el primero en compartir la tuya.",
+    "lessonsTitle": "Lecciones de vida de nuestra comunidad",
+    "lessonsSubtitle": "Respuestas reflexivas compartidas públicamente.",
+    "lessonsEmpty": "Aún no hay lecciones públicas. Sé el primero en compartir la tuya."
+  },
+  "storyPage": {
+    "privateOrMissing": "Esta historia es privada o no existe.",
+    "backToStories": "Volver a las historias",
+    "downloadPdf": "Descargar PDF",
+    "edit": "Editar",
+    "translate": "Traducir",
+    "showOriginal": "Ver original",
+    "translating": "Traduciendo…",
+    "translateUnavailable": "La traducción no está disponible en este momento"
+  },
+  "newStory": {
+    "title": "Escribe una nueva historia",
+    "subtitle": "Elige cómo quieres compartir y luego escribe a tu propio ritmo.",
+    "freeformTitle": "Historia de vida libre",
+    "freeformDesc": "Escribe tu historia con tus propias palabras, a tu propio ritmo.",
+    "questionsTitle": "Lecciones de vida",
+    "questionsDesc": "Responde algunas preguntas reflexivas para ayudar a otros a aprender de tu experiencia.",
+    "familyTreeTitle": "Árbol genealógico",
+    "familyTreeDesc": "Agrega familiares como burbujas y conéctalos para construir tu árbol genealógico.",
+    "chooseDifferentWay": "← Elegir otra forma de escribir",
+    "publish": "Publicar historia"
+  },
+  "editStory": {
+    "title": "Editar historia",
+    "notFound": "Esta historia no existe o no te pertenece para editar.",
+    "saveChanges": "Guardar cambios"
+  },
+  "home": {
+    "eyebrow": "Cada vida es una historia que merece ser contada",
+    "heroTitleLine1": "Tus recuerdos merecen",
+    "heroTitleLine2": "perdurar",
+    "heroSubtitle": "Liferecord es un lugar cálido y sencillo donde las personas pueden escribir y compartir la historia de su vida — para la familia, para el mundo y para las generaciones futuras.",
+    "writeYourStory": "Escribe tu historia",
+    "readStories": "Leer historias",
+    "feature1Title": "Escribe con sencillez",
+    "feature1Desc": "Sin herramientas complicadas. Solo una página limpia donde puedes escribir tus recuerdos a tu propio ritmo.",
+    "feature2Title": "Comparte con tu familia",
+    "feature2Desc": "Envía un enlace a tus seres queridos para que puedan leer, comentar y atesorar tus historias para siempre.",
+    "feature3Title": "Preservado para siempre",
+    "feature3Desc": "Tus historias se guardan de forma segura y están disponibles para quienes tú elijas, ahora y en el futuro.",
+    "howItWorks": "Cómo funciona",
+    "step1Title": "Crea una cuenta",
+    "step1Desc": "Regístrate en segundos, sin configuraciones complicadas.",
+    "step2Title": "Escribe un recuerdo",
+    "step2Desc": "Usa nuestro editor amable para escribir una historia, grande o pequeña.",
+    "step3Title": "Compártela",
+    "step3Desc": "Elige quién puede leerla — solo la familia, o el mundo entero.",
+    "ctaTitle": "¿Listo para empezar?",
+    "ctaSubtitle": "Únete a Liferecord hoy y comienza a convertir tus recuerdos en historias que perduran.",
+    "ctaButton": "Comenzar — es gratis",
+    "footer": "© {year} Liferecord. Hecho con cariño."
+  },
+  "themeMode": {
+    "ariaLabel": "Cambiar tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema"
+  }
+}

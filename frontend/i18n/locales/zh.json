@@ -1,0 +1,231 @@
+{
+  "common": {
+    "save": "保存",
+    "cancel": "取消",
+    "loading": "加载中…",
+    "somethingWentWrong": "出了点问题",
+    "showPassword": "显示密码",
+    "hidePassword": "隐藏密码"
+  },
+  "nav": {
+    "familyTree": "家族树",
+    "readStories": "阅读故事",
+    "myStories": "我的故事",
+    "login": "登录",
+    "startSharing": "开始分享"
+  },
+  "accountMenu": {
+    "settings": "设置",
+    "logout": "退出登录",
+    "lifeStoriesOne": "已撰写 {count} 篇人生故事",
+    "lifeStoriesOther": "已撰写 {count} 篇人生故事",
+    "lessonsOne": "已分享 {count} 条人生感悟",
+    "lessonsOther": "已分享 {count} 条人生感悟",
+    "viewsOne": "{count} 人读过你的故事",
+    "viewsOther": "{count} 人读过你的故事"
+  },
+  "auth": {
+    "emailLabel": "邮箱",
+    "emailPlaceholder": "you@example.com",
+    "passwordLabel": "密码",
+    "login": {
+      "title": "欢迎回来",
+      "subtitle": "登录以继续讲述你的故事。",
+      "passwordPlaceholder": "你的密码",
+      "forgotPassword": "忘记密码了？",
+      "submit": "登录",
+      "submitting": "正在登录…",
+      "noAccount": "还没有账号？",
+      "signUp": "注册"
+    },
+    "signup": {
+      "title": "创建你的账号",
+      "subtitle": "今天就开始写下你的故事，只需一分钟。",
+      "nameLabel": "你的姓名",
+      "namePlaceholder": "王小明",
+      "passwordPlaceholder": "至少 8 个字符",
+      "confirmPasswordLabel": "确认密码",
+      "confirmPasswordPlaceholder": "请再次输入密码",
+      "submit": "创建账号",
+      "submitting": "正在创建账号…",
+      "haveAccount": "已经有账号了？",
+      "logIn": "登录",
+      "passwordMismatch": "两次输入的密码不一致，请检查后重试。"
+    },
+    "forgotPassword": {
+      "title": "重置密码",
+      "subtitle": "输入你的邮箱，我们会发送一个链接以设置新密码。",
+      "submit": "发送重置链接",
+      "submitting": "发送中…",
+      "sent": "如果该邮箱对应的账号存在，我们已发送重置链接，请查收邮箱。",
+      "backToLogin": "返回登录"
+    },
+    "resetPassword": {
+      "title": "设置新密码",
+      "subtitle": "为你的账号设置一个新密码。",
+      "newPasswordLabel": "新密码",
+      "newPasswordPlaceholder": "至少 8 个字符",
+      "confirmNewPasswordLabel": "确认新密码",
+      "confirmNewPasswordPlaceholder": "请再次输入新密码",
+      "submit": "设置新密码",
+      "submitting": "保存中…",
+      "mismatch": "两次输入的密码不一致",
+      "invalidLink": "此重置链接无效或已过期。",
+      "requestNewLink": "重新获取链接",
+      "backToLogin": "返回登录"
+    }
+  },
+  "settings": {
+    "title": "账户设置",
+    "nameSectionTitle": "你的姓名",
+    "nameSectionSubtitle": "每 24 小时只能修改一次姓名。",
+    "nameSaved": "姓名已更新。",
+    "saveName": "保存姓名",
+    "saving": "保存中…",
+    "nameCooldown": "你可以在 {duration} 后再次修改姓名。",
+    "passwordSectionTitle": "密码",
+    "passwordSectionSubtitle": "每 5 分钟只能修改一次密码。",
+    "currentPasswordLabel": "当前密码",
+    "currentPasswordPlaceholder": "你的当前密码",
+    "newPasswordLabel": "新密码",
+    "newPasswordPlaceholder": "至少 8 个字符",
+    "confirmNewPasswordLabel": "确认新密码",
+    "confirmNewPasswordPlaceholder": "请再次输入新密码",
+    "passwordSaved": "密码已更新。",
+    "changePassword": "修改密码",
+    "passwordCooldown": "你可以在 {duration} 后再次修改密码。",
+    "passwordMismatch": "两次输入的新密码不一致，请检查后重试。"
+  },
+  "storyForm": {
+    "titleLabel": "标题",
+    "titlePlaceholder": "给你的故事起个标题",
+    "visibilityLegend": "谁可以看到这个？",
+    "visibilityPrivate": "私密 — 仅自己",
+    "visibilityPublic": "公开 — 所有人",
+    "creditLegend": "署名方式？",
+    "showName": "显示我的姓名",
+    "postAnonymously": "匿名发布",
+    "yourStoryLabel": "你的故事",
+    "yourStoryPlaceholder": "用你自己的话在这里写下你的人生故事，或点击麦克风口述……",
+    "answerPlaceholder": "按你自己的节奏回答，打字或口述均可 — 也可以留空",
+    "saving": "保存中…",
+    "assistButton": "获取写作帮助",
+    "assistLoading": "思考中…",
+    "assistUnavailable": "写作帮助目前不可用。",
+    "assistError": "出了点问题——请重试。",
+    "assistAccept": "添加到我的故事",
+    "chronoLegend": "故事顺序",
+    "chronoButton": "将这个故事按时间顺序排列",
+    "chronoLoading": "正在阅读你的故事…",
+    "chronoUnavailable": "此功能目前不可用。",
+    "chronoError": "出了点问题——请重试。",
+    "chronoDone": "完成——你的故事已重新排序。"
+  },
+  "voiceTextarea": {
+    "startVoiceInput": "开始语音输入",
+    "stopVoiceInput": "停止语音输入",
+    "speakInstead": "改用语音输入",
+    "notSupported": "此浏览器不支持语音输入，请改用打字。",
+    "listening": "正在聆听……说出你的答案，然后点击麦克风停止。",
+    "cleanupButton": "用AI整理我的话",
+    "cleanupLoading": "整理中…",
+    "cleanupUnavailable": "此功能目前不可用。",
+    "cleanupError": "出了点问题——请重试。",
+    "cleanupAccept": "使用这个版本"
+  },
+  "storyTypeTabs": {
+    "lifeStories": "人生故事",
+    "lessonsLearned": "人生感悟"
+  },
+  "storyCard": {
+    "by": "作者：{name}",
+    "anonymous": "匿名"
+  },
+  "myStoriesList": {
+    "welcomeBack": "欢迎回来，{name}。",
+    "downloadAllPdf": "下载全部为 PDF",
+    "newStory": "+ 新建故事",
+    "view": "查看",
+    "edit": "编辑",
+    "export": "导出",
+    "delete": "删除",
+    "deleting": "删除中…",
+    "anonymous": "匿名",
+    "publicBadge": "公开",
+    "privateBadge": "私密",
+    "confirmDelete": "删除这篇故事？此操作无法撤销。",
+    "startFirstOne": "开始写第一篇"
+  },
+  "dashboard": {
+    "lifeStoriesHeading": "我的人生故事",
+    "lifeStoriesEmpty": "你还没有撰写任何人生故事。",
+    "lessonsHeading": "我的人生感悟",
+    "lessonsEmpty": "你还没有分享任何人生感悟。"
+  },
+  "publicStories": {
+    "lifeStoriesTitle": "社区中的人生故事",
+    "lifeStoriesSubtitle": "公开分享的自由体人生故事。",
+    "lifeStoriesEmpty": "暂时还没有公开的人生故事，快来分享第一篇吧。",
+    "lessonsTitle": "社区中的人生感悟",
+    "lessonsSubtitle": "公开分享的深思熟虑的回答。",
+    "lessonsEmpty": "暂时还没有公开的感悟，快来分享第一条吧。"
+  },
+  "storyPage": {
+    "privateOrMissing": "这篇故事是私密的，或者不存在。",
+    "backToStories": "返回故事列表",
+    "downloadPdf": "下载 PDF",
+    "edit": "编辑",
+    "translate": "翻译",
+    "showOriginal": "查看原文",
+    "translating": "翻译中…",
+    "translateUnavailable": "翻译功能暂时不可用"
+  },
+  "newStory": {
+    "title": "写一篇新故事",
+    "subtitle": "选择你想要的分享方式，然后按自己的节奏书写。",
+    "freeformTitle": "自由体人生故事",
+    "freeformDesc": "用你自己的话，按自己的节奏写下你的故事。",
+    "questionsTitle": "人生感悟",
+    "questionsDesc": "回答几个反思性问题，帮助他人从你的经历中学习。",
+    "familyTreeTitle": "家族树",
+    "familyTreeDesc": "以气泡形式添加亲属并连接他们，构建你的家族树。",
+    "chooseDifferentWay": "← 选择其他书写方式",
+    "publish": "发布故事"
+  },
+  "editStory": {
+    "title": "编辑故事",
+    "notFound": "这篇故事不存在，或者不属于你，无法编辑。",
+    "saveChanges": "保存更改"
+  },
+  "home": {
+    "eyebrow": "每一段人生都值得被讲述",
+    "heroTitleLine1": "让你的回忆",
+    "heroTitleLine2": "永远流传",
+    "heroSubtitle": "Liferecord 是一个温暖、简单的地方，人们可以在这里书写并分享自己的人生故事——写给家人、写给世界、写给未来的世代。",
+    "writeYourStory": "写下你的故事",
+    "readStories": "阅读故事",
+    "feature1Title": "轻松书写",
+    "feature1Desc": "无需复杂的工具。只需一个简洁的页面，按照自己的节奏记录回忆。",
+    "feature2Title": "与家人分享",
+    "feature2Desc": "把链接发送给你爱的人，让他们阅读、评论，并永远珍藏你的故事。",
+    "feature3Title": "永久保存",
+    "feature3Desc": "你的故事将被安全保存，随时供你选择的人查看，现在和未来皆可。",
+    "howItWorks": "使用方法",
+    "step1Title": "创建账户",
+    "step1Desc": "几秒钟即可注册——无需繁琐设置。",
+    "step2Title": "写下一段回忆",
+    "step2Desc": "使用我们温和的编辑器，写下或大或小的故事。",
+    "step3Title": "分享故事",
+    "step3Desc": "选择谁可以阅读——仅限家人，或面向全世界。",
+    "ctaTitle": "准备好开始了吗？",
+    "ctaSubtitle": "立即加入 Liferecord，把你的回忆变成经得起时间考验的故事。",
+    "ctaButton": "免费开始",
+    "footer": "© {year} Liferecord。用心打造。"
+  },
+  "themeMode": {
+    "ariaLabel": "切换主题",
+    "light": "浅色",
+    "dark": "深色",
+    "system": "跟随系统"
+  }
+}
