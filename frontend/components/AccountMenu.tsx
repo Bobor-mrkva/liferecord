@@ -5,9 +5,11 @@ import NextLink from "next/link";
 import { useRouter } from "next/navigation";
 import { Box, Button, Flex, Link, Text } from "@chakra-ui/react";
 import { useAuth } from "@/context/AuthContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function AccountMenu() {
   const { user, logout, refresh } = useAuth();
+  const { t } = useLanguage();
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -54,9 +56,9 @@ export default function AccountMenu() {
           right={0}
           mt={2}
           w="64"
-          bg="white"
+          bg="bg.surface"
           border="1px solid"
-          borderColor="amber.200"
+          borderColor="border.default"
           borderRadius="xl"
           boxShadow="lg"
           py={4}
@@ -64,40 +66,48 @@ export default function AccountMenu() {
           zIndex={10}
           textAlign="left"
         >
-          <Text fontWeight="semibold" color="stone.900">
+          <Text fontWeight="semibold" color="fg.heading">
             {user.display_name}
           </Text>
-          <Text fontSize="sm" color="stone.500" mb={3}>
+          <Text fontSize="sm" color="fg.subtle" mb={3}>
             {user.email}
           </Text>
           <Flex
             direction="column"
             gap={1}
             fontSize="sm"
-            color="stone.600"
+            color="fg.muted"
             borderTop="1px solid"
-            borderColor="amber.100"
+            borderColor="border.subtle"
             pt={3}
             mb={3}
           >
             <Text>
-              {user.story_count} {user.story_count === 1 ? "story" : "stories"} written
+              {t(user.life_story_count === 1 ? "accountMenu.lifeStoriesOne" : "accountMenu.lifeStoriesOther", {
+                count: user.life_story_count,
+              })}
             </Text>
             <Text>
-              {user.total_views} {user.total_views === 1 ? "person has" : "people have"} read your
-              stories
+              {t(user.lesson_count === 1 ? "accountMenu.lessonsOne" : "accountMenu.lessonsOther", {
+                count: user.lesson_count,
+              })}
+            </Text>
+            <Text>
+              {t(user.total_views === 1 ? "accountMenu.viewsOne" : "accountMenu.viewsOther", {
+                count: user.total_views,
+              })}
             </Text>
           </Flex>
-          <Flex direction="column" gap={2} borderTop="1px solid" borderColor="amber.100" pt={3}>
+          <Flex direction="column" gap={2} borderTop="1px solid" borderColor="border.subtle" pt={3}>
             <Link
               asChild
               fontSize="sm"
-              color="amber.800"
+              color="brand.text"
               fontWeight="medium"
               _hover={{ textDecoration: "underline" }}
             >
               <NextLink href="/settings" onClick={() => setOpen(false)}>
-                Settings
+                {t("accountMenu.settings")}
               </NextLink>
             </Link>
             <Button
@@ -111,7 +121,7 @@ export default function AccountMenu() {
               h="auto"
               _hover={{ textDecoration: "underline" }}
             >
-              Log out
+              {t("accountMenu.logout")}
             </Button>
           </Flex>
         </Box>

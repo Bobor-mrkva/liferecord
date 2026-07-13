@@ -6,6 +6,7 @@ import NextLink from "next/link";
 import { Button, Flex, Heading, Input, Link, Text } from "@chakra-ui/react";
 import { api, ApiError, User } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
+import { useLanguage } from "@/context/LanguageContext";
 import PasswordInput from "@/components/PasswordInput";
 import AuthCard from "@/components/AuthCard";
 
@@ -18,12 +19,13 @@ export default function SignupPage() {
   const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
   const { refresh } = useAuth();
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     if (password !== confirmPassword) {
-      setError("Passwords don't match — please check both fields.");
+      setError(t("auth.signup.passwordMismatch"));
       return;
     }
     setSubmitting(true);
@@ -36,7 +38,7 @@ export default function SignupPage() {
       await refresh();
       router.push("/dashboard");
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Something went wrong");
+      setError(err instanceof ApiError ? err.message : t("common.somethingWentWrong"));
     } finally {
       setSubmitting(false);
     }
@@ -44,17 +46,17 @@ export default function SignupPage() {
 
   return (
     <AuthCard>
-      <Heading as="h1" fontSize="3xl" fontWeight="bold" color="stone.900" mb={2}>
-        Create your account
+      <Heading as="h1" fontSize="3xl" fontWeight="bold" color="fg.heading" mb={2}>
+        {t("auth.signup.title")}
       </Heading>
-      <Text color="stone.500" mb={8}>
-        Start writing your story today. It only takes a minute.
+      <Text color="fg.subtle" mb={8}>
+        {t("auth.signup.subtitle")}
       </Text>
 
       <Flex as="form" onSubmit={handleSubmit} direction="column" gap={5}>
         <Flex as="label" direction="column" gap={2}>
-          <Text fontSize="sm" fontWeight="medium" color="stone.700">
-            Your name
+          <Text fontSize="sm" fontWeight="medium" color="fg.default">
+            {t("auth.signup.nameLabel")}
           </Text>
           <Input
             type="text"
@@ -62,20 +64,20 @@ export default function SignupPage() {
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
             border="1px solid"
-            borderColor="amber.200"
+            borderColor="border.default"
             borderRadius="lg"
             px={4}
             py={3}
             h="auto"
             fontSize="md"
-            color="stone.900"
+            color="fg.heading"
             _focus={{ outline: "none", boxShadow: "0 0 0 2px var(--chakra-colors-amber-400)" }}
-            placeholder="Jane Doe"
+            placeholder={t("auth.signup.namePlaceholder")}
           />
         </Flex>
         <Flex as="label" direction="column" gap={2}>
-          <Text fontSize="sm" fontWeight="medium" color="stone.700">
-            Email
+          <Text fontSize="sm" fontWeight="medium" color="fg.default">
+            {t("auth.emailLabel")}
           </Text>
           <Input
             type="email"
@@ -83,39 +85,39 @@ export default function SignupPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             border="1px solid"
-            borderColor="amber.200"
+            borderColor="border.default"
             borderRadius="lg"
             px={4}
             py={3}
             h="auto"
             fontSize="md"
-            color="stone.900"
+            color="fg.heading"
             _focus={{ outline: "none", boxShadow: "0 0 0 2px var(--chakra-colors-amber-400)" }}
-            placeholder="you@example.com"
+            placeholder={t("auth.emailPlaceholder")}
           />
         </Flex>
         <Flex as="label" direction="column" gap={2}>
-          <Text fontSize="sm" fontWeight="medium" color="stone.700">
-            Password
+          <Text fontSize="sm" fontWeight="medium" color="fg.default">
+            {t("auth.passwordLabel")}
           </Text>
           <PasswordInput
             value={password}
             onChange={setPassword}
             minLength={8}
             autoComplete="new-password"
-            placeholder="At least 8 characters"
+            placeholder={t("auth.signup.passwordPlaceholder")}
           />
         </Flex>
         <Flex as="label" direction="column" gap={2}>
-          <Text fontSize="sm" fontWeight="medium" color="stone.700">
-            Confirm password
+          <Text fontSize="sm" fontWeight="medium" color="fg.default">
+            {t("auth.signup.confirmPasswordLabel")}
           </Text>
           <PasswordInput
             value={confirmPassword}
             onChange={setConfirmPassword}
             minLength={8}
             autoComplete="new-password"
-            placeholder="Type your password again"
+            placeholder={t("auth.signup.confirmPasswordPlaceholder")}
           />
         </Flex>
 
@@ -138,14 +140,14 @@ export default function SignupPage() {
           _hover={{ bg: "amber.900" }}
           _disabled={{ opacity: 0.6 }}
         >
-          {submitting ? "Creating account..." : "Create account"}
+          {submitting ? t("auth.signup.submitting") : t("auth.signup.submit")}
         </Button>
       </Flex>
 
-      <Text fontSize="sm" color="stone.500" mt={6} textAlign="center">
-        Already have an account?{" "}
-        <Link asChild color="amber.800" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
-          <NextLink href="/login">Log in</NextLink>
+      <Text fontSize="sm" color="fg.subtle" mt={6} textAlign="center">
+        {t("auth.signup.haveAccount")}{" "}
+        <Link asChild color="brand.text" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
+          <NextLink href="/login">{t("auth.signup.logIn")}</NextLink>
         </Link>
       </Text>
     </AuthCard>

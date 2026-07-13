@@ -4,6 +4,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const authRouter = require('./routes/auth');
 const storiesRouter = require('./routes/stories');
+const familyTreeRouter = require('./routes/family-tree');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -18,6 +19,7 @@ app.get('/health', (req, res) => {
 
 app.use('/auth', authRouter);
 app.use('/', storiesRouter);
+app.use('/', familyTreeRouter);
 
 app.listen(PORT, () => {
   console.log(`Liferecord backend running on port ${PORT}`);

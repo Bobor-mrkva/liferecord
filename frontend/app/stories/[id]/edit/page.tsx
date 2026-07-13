@@ -5,12 +5,14 @@ import { useParams, useRouter } from "next/navigation";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { api, ApiError, Question, Story } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
+import { useLanguage } from "@/context/LanguageContext";
 import StoryForm, { StoryFormValues } from "@/components/StoryForm";
 
 export default function EditStoryPage() {
   const { id } = useParams<{ id: string }>();
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
+  const { t } = useLanguage();
   const [story, setStory] = useState<Story | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [notFound, setNotFound] = useState(false);
@@ -43,16 +45,16 @@ export default function EditStoryPage() {
 
   if (notFound) {
     return (
-      <Flex as="main" direction="column" align="center" px={6} py={24} bg="amber.50" minH="100vh" textAlign="center">
-        <Text color="stone.600">This story doesn&apos;t exist or isn&apos;t yours to edit.</Text>
+      <Flex as="main" direction="column" align="center" px={6} py={24} bg="bg.page" minH="100vh" textAlign="center">
+        <Text color="fg.muted">{t("editStory.notFound")}</Text>
       </Flex>
     );
   }
 
   if (!story) {
     return (
-      <Flex as="main" direction="column" align="center" px={6} py={24} bg="amber.50" minH="100vh">
-        <Text color="stone.500">Loading...</Text>
+      <Flex as="main" direction="column" align="center" px={6} py={24} bg="bg.page" minH="100vh">
+        <Text color="fg.subtle">{t("common.loading")}</Text>
       </Flex>
     );
   }
@@ -69,6 +71,7 @@ export default function EditStoryPage() {
       await api.patch<Story>(`/stories/${story.id}`, {
         title: values.title,
         visibility: values.visibility,
+        is_anonymous: values.is_anonymous,
         content: story.mode === "freeform" ? values.content : undefined,
         answers:
           story.mode === "questions"
@@ -80,28 +83,29 @@ export default function EditStoryPage() {
       });
       router.push(`/stories/${story.id}`);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Something went wrong");
+      setError(err instanceof ApiError ? err.message : t("common.somethingWentWrong"));
       setSubmitting(false);
     }
   };
 
   return (
-    <Flex as="main" direction="column" align="center" px={6} py={16} bg="amber.50" minH="100vh">
+    <Flex as="main" direction="column" align="center" px={6} py={16} bg="bg.page" minH="100vh">
       <Box w="full" maxW="2xl">
-        <Heading as="h1" fontSize="3xl" fontWeight="bold" color="stone.900" mb={8}>
-          Edit story
+        <Heading as="h1" fontSize="3xl" fontWeight="bold" color="fg.heading" mb={8}>
+          {t("editStory.title")}
         </Heading>
-        <Box bg="white" border="1px solid" borderColor="amber.200" borderRadius="2xl" p={8}>
+        <Box bg="bg.surface" border="1px solid" borderColor="border.default" borderRadius="2xl" p={8}>
           <StoryForm
             mode={story.mode}
             questions={questions}
             initialValues={{
               title: story.title,
               visibility: story.visibility,
+              is_anonymous: story.is_anonymous,
               content: story.content ?? "",
               answers: initialAnswers,
             }}
-            submitLabel="Save changes"
+            submitLabel={t("editStory.saveChanges")}
             submitting={submitting}
             error={error}
             onSubmit={handleSubmit}

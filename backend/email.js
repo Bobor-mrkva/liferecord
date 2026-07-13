@@ -8,7 +8,7 @@ const sendPasswordResetEmail = async (to, resetUrl) => {
     return;
   }
 
-  await resend.emails.send({
+  const result = await resend.emails.send({
     from: process.env.RESEND_FROM_EMAIL || 'Liferecord <onboarding@resend.dev>',
     to,
     subject: 'Reset your Liferecord password',
@@ -47,6 +47,11 @@ If you didn't request this, you can safely ignore this email — your password w
       </div>
     `,
   });
+
+  if (result.error) {
+    console.error(`[email] Resend failed to deliver password reset email to ${to}:`, result.error);
+    console.log(`[dev] Password reset link for ${to}: ${resetUrl}`);
+  }
 };
 
 module.exports = { sendPasswordResetEmail };

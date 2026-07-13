@@ -22,6 +22,9 @@ const PASSWORD_CHANGE_COOLDOWN_MS = 5 * 60 * 1000;
 const RESET_REQUEST_COOLDOWN_MS = 60 * 1000;
 const RESET_TOKEN_TTL_MS = 60 * 60 * 1000;
 
+const VALID_LOCALES = ['en', 'fr', 'es', 'de', 'hu', 'zh'];
+const VALID_THEME_MODES = ['light', 'dark', 'system'];
+
 const hashToken = (token) => crypto.createHash('sha256').update(token).digest('hex');
 
 const signToken = (userId) =>
@@ -44,17 +47,22 @@ const formatDuration = (ms) => {
 const getProfile = (userId) => {
   const user = db
     .prepare(
-      'SELECT id, email, display_name, name_changed_at, password_changed_at FROM users WHERE id = ?'
+      'SELECT id, email, display_name, name_changed_at, password_changed_at, preferred_locale, preferred_theme_mode FROM users WHERE id = ?'
     )
     .get(userId);
   const stats = db
     .prepare(
-      'SELECT COUNT(*) AS story_count, COALESCE(SUM(view_count), 0) AS total_views FROM stories WHERE user_id = ?'
+      `SELECT
+         SUM(CASE WHEN mode = 'freeform' THEN 1 ELSE 0 END) AS life_story_count,
+         SUM(CASE WHEN mode = 'questions' THEN 1 ELSE 0 END) AS lesson_count,
+         COALESCE(SUM(view_count), 0) AS total_views
+       FROM stories WHERE user_id = ?`
     )
     .get(userId);
   return {
     ...user,
-    story_count: stats.story_count,
+    life_story_count: stats.life_story_count || 0,
+    lesson_count: stats.lesson_count || 0,
     total_views: stats.total_views,
     name_change_cooldown_ms: cooldownRemainingMs(user.name_changed_at, NAME_CHANGE_COOLDOWN_MS),
     password_change_cooldown_ms: cooldownRemainingMs(
@@ -143,6 +151,21 @@ router.patch('/me', requireAuth, (req, res) => {
     now,
     req.user.id
   );
+  res.json(getProfile(req.user.id));
+});
+
+router.patch('/preferences', requireAuth, (req, res) => {
+  const { locale, theme_mode } = req.body;
+  if (locale !== undefined && locale !== null && !VALID_LOCALES.includes(locale)) {
+    return res.status(400).json({ error: 'Invalid locale' });
+  }
+  if (theme_mode !== undefined && theme_mode !== null && !VALID_THEME_MODES.includes(theme_mode)) {
+    return res.status(400).json({ error: 'Invalid theme_mode' });
+  }
+
+  db.prepare(
+    'UPDATE users SET preferred_locale = COALESCE(?, preferred_locale), preferred_theme_mode = COALESCE(?, preferred_theme_mode) WHERE id = ?'
+  ).run(locale ?? null, theme_mode ?? null, req.user.id);
   res.json(getProfile(req.user.id));
 });
 

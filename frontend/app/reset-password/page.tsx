@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import NextLink from "next/link";
 import { Button, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import { api, ApiError } from "@/lib/api";
+import { useLanguage } from "@/context/LanguageContext";
 import PasswordInput from "@/components/PasswordInput";
 import AuthCard from "@/components/AuthCard";
 
@@ -16,13 +17,14 @@ function ResetPasswordForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
     if (password !== confirmPassword) {
-      setError("Passwords don't match");
+      setError(t("auth.resetPassword.mismatch"));
       return;
     }
 
@@ -31,7 +33,7 @@ function ResetPasswordForm() {
       await api.post("/auth/reset-password", { token, new_password: password });
       router.push("/login");
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Something went wrong");
+      setError(err instanceof ApiError ? err.message : t("common.somethingWentWrong"));
     } finally {
       setSubmitting(false);
     }
@@ -40,10 +42,10 @@ function ResetPasswordForm() {
   if (!token) {
     return (
       <>
-        <Text color="red.600">This reset link is invalid or has expired.</Text>
-        <Text fontSize="sm" color="stone.500" mt={6} textAlign="center">
-          <Link asChild color="amber.800" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
-            <NextLink href="/forgot-password">Request a new link</NextLink>
+        <Text color="red.600">{t("auth.resetPassword.invalidLink")}</Text>
+        <Text fontSize="sm" color="fg.subtle" mt={6} textAlign="center">
+          <Link asChild color="brand.text" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
+            <NextLink href="/forgot-password">{t("auth.resetPassword.requestNewLink")}</NextLink>
           </Link>
         </Text>
       </>
@@ -54,27 +56,27 @@ function ResetPasswordForm() {
     <>
       <Flex as="form" onSubmit={handleSubmit} direction="column" gap={5}>
         <Flex as="label" direction="column" gap={2}>
-          <Text fontSize="sm" fontWeight="medium" color="stone.700">
-            New password
+          <Text fontSize="sm" fontWeight="medium" color="fg.default">
+            {t("auth.resetPassword.newPasswordLabel")}
           </Text>
           <PasswordInput
             value={password}
             onChange={setPassword}
             autoComplete="new-password"
             minLength={8}
-            placeholder="At least 8 characters"
+            placeholder={t("auth.resetPassword.newPasswordPlaceholder")}
           />
         </Flex>
         <Flex as="label" direction="column" gap={2}>
-          <Text fontSize="sm" fontWeight="medium" color="stone.700">
-            Confirm new password
+          <Text fontSize="sm" fontWeight="medium" color="fg.default">
+            {t("auth.resetPassword.confirmNewPasswordLabel")}
           </Text>
           <PasswordInput
             value={confirmPassword}
             onChange={setConfirmPassword}
             autoComplete="new-password"
             minLength={8}
-            placeholder="Re-enter your new password"
+            placeholder={t("auth.resetPassword.confirmNewPasswordPlaceholder")}
           />
         </Flex>
 
@@ -85,7 +87,7 @@ function ResetPasswordForm() {
               <>
                 {" "}
                 <Link asChild fontWeight="medium" _hover={{ textDecoration: "underline" }}>
-                  <NextLink href="/forgot-password">Request a new link</NextLink>
+                  <NextLink href="/forgot-password">{t("auth.resetPassword.requestNewLink")}</NextLink>
                 </Link>
               </>
             )}
@@ -105,13 +107,13 @@ function ResetPasswordForm() {
           _hover={{ bg: "amber.900" }}
           _disabled={{ opacity: 0.6 }}
         >
-          {submitting ? "Saving..." : "Set new password"}
+          {submitting ? t("auth.resetPassword.submitting") : t("auth.resetPassword.submit")}
         </Button>
       </Flex>
 
-      <Text fontSize="sm" color="stone.500" mt={6} textAlign="center">
-        <Link asChild color="amber.800" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
-          <NextLink href="/login">Back to login</NextLink>
+      <Text fontSize="sm" color="fg.subtle" mt={6} textAlign="center">
+        <Link asChild color="brand.text" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
+          <NextLink href="/login">{t("auth.resetPassword.backToLogin")}</NextLink>
         </Link>
       </Text>
     </>
@@ -119,13 +121,14 @@ function ResetPasswordForm() {
 }
 
 export default function ResetPasswordPage() {
+  const { t } = useLanguage();
   return (
     <AuthCard>
-      <Heading as="h1" fontSize="3xl" fontWeight="bold" color="stone.900" mb={2}>
-        Choose a new password
+      <Heading as="h1" fontSize="3xl" fontWeight="bold" color="fg.heading" mb={2}>
+        {t("auth.resetPassword.title")}
       </Heading>
-      <Text color="stone.500" mb={8}>
-        Enter a new password for your account.
+      <Text color="fg.subtle" mb={8}>
+        {t("auth.resetPassword.subtitle")}
       </Text>
 
       <Suspense fallback={null}>

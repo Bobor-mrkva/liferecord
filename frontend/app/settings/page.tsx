@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Box, Button, Flex, Heading, Input, Text } from "@chakra-ui/react";
 import { api, ApiError, formatDuration, User } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
+import { useLanguage } from "@/context/LanguageContext";
 import PasswordInput from "@/components/PasswordInput";
 
 function useCountdown(initialMs: number) {
@@ -30,6 +31,7 @@ function useCountdown(initialMs: number) {
 export default function SettingsPage() {
   const { user, loading: authLoading, refresh } = useAuth();
   const router = useRouter();
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (!authLoading && !user) router.push("/login");
@@ -38,10 +40,10 @@ export default function SettingsPage() {
   if (authLoading || !user) return null;
 
   return (
-    <Flex as="main" direction="column" align="center" px={6} py={16} bg="amber.50" minH="100vh">
+    <Flex as="main" direction="column" align="center" px={6} py={16} bg="bg.page" minH="100vh">
       <Flex w="full" maxW="md" direction="column" gap={8}>
-        <Heading as="h1" fontSize="3xl" fontWeight="bold" color="stone.900">
-          Account settings
+        <Heading as="h1" fontSize="3xl" fontWeight="bold" color="fg.heading">
+          {t("settings.title")}
         </Heading>
         <NameForm user={user} onSaved={refresh} />
         <PasswordForm user={user} onSaved={refresh} />
@@ -56,6 +58,7 @@ function NameForm({ user, onSaved }: { user: User; onSaved: () => void }) {
   const [success, setSuccess] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const cooldown = useCountdown(user.name_change_cooldown_ms);
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,19 +70,19 @@ function NameForm({ user, onSaved }: { user: User; onSaved: () => void }) {
       onSaved();
       setSuccess(true);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Something went wrong");
+      setError(err instanceof ApiError ? err.message : t("common.somethingWentWrong"));
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <Box bg="white" border="1px solid" borderColor="amber.200" borderRadius="2xl" p={8}>
-      <Heading as="h2" fontSize="xl" fontWeight="semibold" color="stone.900" mb={1}>
-        Your name
+    <Box bg="bg.surface" border="1px solid" borderColor="border.default" borderRadius="2xl" p={8}>
+      <Heading as="h2" fontSize="xl" fontWeight="semibold" color="fg.heading" mb={1}>
+        {t("settings.nameSectionTitle")}
       </Heading>
-      <Text color="stone.500" fontSize="sm" mb={6}>
-        You can change your name once every 24 hours.
+      <Text color="fg.subtle" fontSize="sm" mb={6}>
+        {t("settings.nameSectionSubtitle")}
       </Text>
       <Flex as="form" onSubmit={handleSubmit} direction="column" gap={4}>
         <Input
@@ -89,19 +92,19 @@ function NameForm({ user, onSaved }: { user: User; onSaved: () => void }) {
           onChange={(e) => setDisplayName(e.target.value)}
           disabled={cooldown > 0}
           border="1px solid"
-          borderColor="amber.200"
+          borderColor="border.default"
           borderRadius="lg"
           px={4}
           py={3}
           h="auto"
           fontSize="md"
-          color="stone.900"
+          color="fg.heading"
           _focus={{ outline: "none", boxShadow: "0 0 0 2px var(--chakra-colors-amber-400)" }}
           _disabled={{ bg: "stone.50", color: "stone.400" }}
         />
         {cooldown > 0 && (
-          <Text fontSize="sm" color="stone.500">
-            You can change your name again in {formatDuration(cooldown)}.
+          <Text fontSize="sm" color="fg.subtle">
+            {t("settings.nameCooldown", { duration: formatDuration(cooldown) })}
           </Text>
         )}
         {error && (
@@ -111,7 +114,7 @@ function NameForm({ user, onSaved }: { user: User; onSaved: () => void }) {
         )}
         {success && (
           <Text color="green.700" fontSize="sm">
-            Name updated.
+            {t("settings.nameSaved")}
           </Text>
         )}
         <Box>
@@ -128,7 +131,7 @@ function NameForm({ user, onSaved }: { user: User; onSaved: () => void }) {
             _hover={{ bg: "amber.900" }}
             _disabled={{ opacity: 0.5 }}
           >
-            {submitting ? "Saving..." : "Save name"}
+            {submitting ? t("settings.saving") : t("settings.saveName")}
           </Button>
         </Box>
       </Flex>
@@ -144,13 +147,14 @@ function PasswordForm({ user, onSaved }: { user: User; onSaved: () => void }) {
   const [success, setSuccess] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const cooldown = useCountdown(user.password_change_cooldown_ms);
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setSuccess(false);
     if (newPassword !== confirmPassword) {
-      setError("New passwords don't match — please check both fields.");
+      setError(t("settings.passwordMismatch"));
       return;
     }
     setSubmitting(true);
@@ -165,59 +169,59 @@ function PasswordForm({ user, onSaved }: { user: User; onSaved: () => void }) {
       setNewPassword("");
       setConfirmPassword("");
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Something went wrong");
+      setError(err instanceof ApiError ? err.message : t("common.somethingWentWrong"));
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <Box bg="white" border="1px solid" borderColor="amber.200" borderRadius="2xl" p={8}>
-      <Heading as="h2" fontSize="xl" fontWeight="semibold" color="stone.900" mb={1}>
-        Password
+    <Box bg="bg.surface" border="1px solid" borderColor="border.default" borderRadius="2xl" p={8}>
+      <Heading as="h2" fontSize="xl" fontWeight="semibold" color="fg.heading" mb={1}>
+        {t("settings.passwordSectionTitle")}
       </Heading>
-      <Text color="stone.500" fontSize="sm" mb={6}>
-        You can change your password once every 5 minutes.
+      <Text color="fg.subtle" fontSize="sm" mb={6}>
+        {t("settings.passwordSectionSubtitle")}
       </Text>
       <Flex as="form" onSubmit={handleSubmit} direction="column" gap={4}>
         <Flex as="label" direction="column" gap={2}>
-          <Text fontSize="sm" fontWeight="medium" color="stone.700">
-            Current password
+          <Text fontSize="sm" fontWeight="medium" color="fg.default">
+            {t("settings.currentPasswordLabel")}
           </Text>
           <PasswordInput
             value={currentPassword}
             onChange={setCurrentPassword}
             autoComplete="current-password"
-            placeholder="Your current password"
+            placeholder={t("settings.currentPasswordPlaceholder")}
           />
         </Flex>
         <Flex as="label" direction="column" gap={2}>
-          <Text fontSize="sm" fontWeight="medium" color="stone.700">
-            New password
+          <Text fontSize="sm" fontWeight="medium" color="fg.default">
+            {t("settings.newPasswordLabel")}
           </Text>
           <PasswordInput
             value={newPassword}
             onChange={setNewPassword}
             minLength={8}
             autoComplete="new-password"
-            placeholder="At least 8 characters"
+            placeholder={t("settings.newPasswordPlaceholder")}
           />
         </Flex>
         <Flex as="label" direction="column" gap={2}>
-          <Text fontSize="sm" fontWeight="medium" color="stone.700">
-            Confirm new password
+          <Text fontSize="sm" fontWeight="medium" color="fg.default">
+            {t("settings.confirmNewPasswordLabel")}
           </Text>
           <PasswordInput
             value={confirmPassword}
             onChange={setConfirmPassword}
             minLength={8}
             autoComplete="new-password"
-            placeholder="Type your new password again"
+            placeholder={t("settings.confirmNewPasswordPlaceholder")}
           />
         </Flex>
         {cooldown > 0 && (
-          <Text fontSize="sm" color="stone.500">
-            You can change your password again in {formatDuration(cooldown)}.
+          <Text fontSize="sm" color="fg.subtle">
+            {t("settings.passwordCooldown", { duration: formatDuration(cooldown) })}
           </Text>
         )}
         {error && (
@@ -227,7 +231,7 @@ function PasswordForm({ user, onSaved }: { user: User; onSaved: () => void }) {
         )}
         {success && (
           <Text color="green.700" fontSize="sm">
-            Password updated.
+            {t("settings.passwordSaved")}
           </Text>
         )}
         <Box>
@@ -244,7 +248,7 @@ function PasswordForm({ user, onSaved }: { user: User; onSaved: () => void }) {
             _hover={{ bg: "amber.900" }}
             _disabled={{ opacity: 0.5 }}
           >
-            {submitting ? "Saving..." : "Change password"}
+            {submitting ? t("settings.saving") : t("settings.changePassword")}
           </Button>
         </Box>
       </Flex>

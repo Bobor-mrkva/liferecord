@@ -32,6 +32,52 @@ const config = defineConfig({
         },
       },
     },
+    semanticTokens: {
+      colors: {
+        "bg.page": {
+          value: { base: "{colors.amber.50}", _dark: "{colors.stone.950}" },
+        },
+        "bg.surface": {
+          value: { base: "white", _dark: "{colors.stone.900}" },
+        },
+        "bg.subtle": {
+          value: { base: "{colors.amber.100}", _dark: "{colors.stone.800}" },
+        },
+        "border.default": {
+          value: { base: "{colors.amber.200}", _dark: "{colors.stone.700}" },
+        },
+        "border.subtle": {
+          value: { base: "{colors.amber.100}", _dark: "{colors.stone.800}" },
+        },
+        "border.strong": {
+          value: { base: "{colors.amber.300}", _dark: "{colors.stone.600}" },
+        },
+        "fg.heading": {
+          value: { base: "{colors.stone.900}", _dark: "{colors.stone.50}" },
+        },
+        "fg.default": {
+          value: { base: "{colors.stone.700}", _dark: "{colors.stone.300}" },
+        },
+        "fg.muted": {
+          value: { base: "{colors.stone.600}", _dark: "{colors.stone.400}" },
+        },
+        "fg.subtle": {
+          value: { base: "{colors.stone.500}", _dark: "{colors.stone.500}" },
+        },
+        "fg.faint": {
+          value: { base: "{colors.stone.400}", _dark: "{colors.stone.600}" },
+        },
+        "brand.text": {
+          value: { base: "{colors.amber.800}", _dark: "{colors.amber.400}" },
+        },
+        "brand.heading": {
+          value: { base: "{colors.amber.900}", _dark: "{colors.amber.200}" },
+        },
+        "brand.hover": {
+          value: { base: "{colors.amber.900}", _dark: "{colors.amber.300}" },
+        },
+      },
+    },
   },
 });
 

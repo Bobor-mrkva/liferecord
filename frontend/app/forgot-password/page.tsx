@@ -4,6 +4,7 @@ import { useState } from "react";
 import NextLink from "next/link";
 import { Button, Flex, Heading, Input, Link, Text } from "@chakra-ui/react";
 import { api, ApiError } from "@/lib/api";
+import { useLanguage } from "@/context/LanguageContext";
 import AuthCard from "@/components/AuthCard";
 
 export default function ForgotPasswordPage() {
@@ -11,6 +12,7 @@ export default function ForgotPasswordPage() {
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,7 +22,7 @@ export default function ForgotPasswordPage() {
       await api.post("/auth/forgot-password", { email });
       setSent(true);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Something went wrong");
+      setError(err instanceof ApiError ? err.message : t("common.somethingWentWrong"));
     } finally {
       setSubmitting(false);
     }
@@ -28,22 +30,20 @@ export default function ForgotPasswordPage() {
 
   return (
     <AuthCard>
-      <Heading as="h1" fontSize="3xl" fontWeight="bold" color="stone.900" mb={2}>
-        Reset your password
+      <Heading as="h1" fontSize="3xl" fontWeight="bold" color="fg.heading" mb={2}>
+        {t("auth.forgotPassword.title")}
       </Heading>
-      <Text color="stone.500" mb={8}>
-        Enter your email and we&apos;ll send you a link to choose a new password.
+      <Text color="fg.subtle" mb={8}>
+        {t("auth.forgotPassword.subtitle")}
       </Text>
 
       {sent ? (
-        <Text color="stone.700">
-          If an account exists for that email, we&apos;ve sent a reset link. Check your inbox.
-        </Text>
+        <Text color="fg.default">{t("auth.forgotPassword.sent")}</Text>
       ) : (
         <Flex as="form" onSubmit={handleSubmit} direction="column" gap={5}>
           <Flex as="label" direction="column" gap={2}>
-            <Text fontSize="sm" fontWeight="medium" color="stone.700">
-              Email
+            <Text fontSize="sm" fontWeight="medium" color="fg.default">
+              {t("auth.emailLabel")}
             </Text>
             <Input
               type="email"
@@ -51,15 +51,15 @@ export default function ForgotPasswordPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               border="1px solid"
-              borderColor="amber.200"
+              borderColor="border.default"
               borderRadius="lg"
               px={4}
               py={3}
               h="auto"
               fontSize="md"
-              color="stone.900"
+              color="fg.heading"
               _focus={{ outline: "none", boxShadow: "0 0 0 2px var(--chakra-colors-amber-400)" }}
-              placeholder="you@example.com"
+              placeholder={t("auth.emailPlaceholder")}
             />
           </Flex>
 
@@ -82,14 +82,14 @@ export default function ForgotPasswordPage() {
             _hover={{ bg: "amber.900" }}
             _disabled={{ opacity: 0.6 }}
           >
-            {submitting ? "Sending..." : "Send reset link"}
+            {submitting ? t("auth.forgotPassword.submitting") : t("auth.forgotPassword.submit")}
           </Button>
         </Flex>
       )}
 
-      <Text fontSize="sm" color="stone.500" mt={6} textAlign="center">
-        <Link asChild color="amber.800" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
-          <NextLink href="/login">Back to login</NextLink>
+      <Text fontSize="sm" color="fg.subtle" mt={6} textAlign="center">
+        <Link asChild color="brand.text" fontWeight="medium" _hover={{ textDecoration: "underline" }}>
+          <NextLink href="/login">{t("auth.forgotPassword.backToLogin")}</NextLink>
         </Link>
       </Text>
     </AuthCard>

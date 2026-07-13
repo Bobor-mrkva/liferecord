@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 
 export class ApiError extends Error {
   status: number;
@@ -42,10 +42,13 @@ export type User = {
   display_name: string;
   name_changed_at: string | null;
   password_changed_at: string | null;
-  story_count: number;
+  life_story_count: number;
+  lesson_count: number;
   total_views: number;
   name_change_cooldown_ms: number;
   password_change_cooldown_ms: number;
+  preferred_locale: string | null;
+  preferred_theme_mode: "light" | "dark" | "system" | null;
 };
 
 export type Question = {
@@ -67,10 +70,70 @@ export type Story = {
   visibility: "public" | "private";
   title: string;
   content: string | null;
+  is_anonymous: boolean;
+  author_display_name: string | null;
   view_count: number;
+  language: string;
   created_at: string;
   updated_at: string;
   answers?: StoryAnswer[];
+};
+
+export type Translation = {
+  language: string;
+  title: string;
+  content: string | null;
+  answers?: StoryAnswer[];
+};
+
+export type TreeBubble = {
+  id: number;
+  tree_id: number;
+  name: string;
+  birth_year: number | null;
+  location: string | null;
+  notes: string | null;
+  position_x: number;
+  position_y: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type TreeConnection = {
+  id: number;
+  tree_id: number;
+  from_bubble_id: number;
+  to_bubble_id: number;
+  label: string;
+  from_handle: string | null;
+  to_handle: string | null;
+  created_at: string;
+};
+
+export type FamilyTree = {
+  id: number;
+  user_id: number;
+  visibility: "public" | "private";
+  created_at: string;
+  updated_at: string;
+  bubbles: TreeBubble[];
+  connections: TreeConnection[];
+  owner_display_name?: string;
+};
+
+export type TreeMatch = {
+  bubble_id: number;
+  name: string;
+  birth_year: number | null;
+  location: string | null;
+  tree_id: number;
+  tree_owner_id: number;
+  tree_owner_display_name: string;
+};
+
+export type TreeMatches = {
+  eligible: boolean;
+  matches: TreeMatch[];
 };
 
 export function formatDuration(ms: number): string {

@@ -1,6 +1,7 @@
 import NextLink from "next/link";
 import { Box, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import { Story } from "@/lib/api";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function StoryCard({
   story,
@@ -9,6 +10,7 @@ export default function StoryCard({
   story: Story;
   showVisibility?: boolean;
 }) {
+  const { t } = useLanguage();
   const preview =
     story.mode === "freeform"
       ? story.content
@@ -18,17 +20,17 @@ export default function StoryCard({
     <Link
       asChild
       display="block"
-      bg="white"
+      bg="bg.surface"
       border="1px solid"
-      borderColor="amber.200"
+      borderColor="border.default"
       borderRadius="2xl"
       p={6}
       _hover={{ borderColor: "amber.400" }}
       transition="border-color 0.2s"
     >
       <NextLink href={`/stories/${story.id}`}>
-        <Flex align="center" gap={2} mb={2}>
-          <Heading as="h3" fontSize="xl" fontWeight="semibold" color="stone.900">
+        <Flex align="center" gap={2} mb={1}>
+          <Heading as="h3" fontSize="xl" fontWeight="semibold" color="fg.heading">
             {story.title}
           </Heading>
           {showVisibility && (
@@ -45,8 +47,11 @@ export default function StoryCard({
             </Box>
           )}
         </Flex>
+        <Text fontSize="sm" color="fg.subtle" mb={2}>
+          {t("storyCard.by", { name: story.author_display_name ?? t("storyCard.anonymous") })}
+        </Text>
         <Text
-          color="stone.500"
+          color="fg.subtle"
           fontSize="sm"
           overflow="hidden"
           textOverflow="ellipsis"

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Box, IconButton, Input } from "@chakra-ui/react";
+import { useLanguage } from "@/context/LanguageContext";
 
 type PasswordInputProps = {
   value: string;
@@ -19,6 +20,7 @@ export default function PasswordInput({
   autoComplete,
 }: PasswordInputProps) {
   const [visible, setVisible] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <Box position="relative">
@@ -30,29 +32,29 @@ export default function PasswordInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         border="1px solid"
-        borderColor="amber.200"
+        borderColor="border.default"
         borderRadius="lg"
         px={4}
         py={3}
         pr={12}
         h="auto"
         fontSize="md"
-        color="stone.900"
+        color="fg.heading"
         _focus={{ outline: "none", boxShadow: "0 0 0 2px var(--chakra-colors-amber-400)" }}
         placeholder={placeholder}
       />
       <IconButton
         type="button"
         onClick={() => setVisible((v) => !v)}
-        aria-label={visible ? "Hide password" : "Show password"}
-        title={visible ? "Hide password" : "Show password"}
+        aria-label={visible ? t("common.hidePassword") : t("common.showPassword")}
+        title={visible ? t("common.hidePassword") : t("common.showPassword")}
         variant="plain"
         position="absolute"
         top="50%"
         right={3}
         transform="translateY(-50%)"
-        color="amber.800"
-        _hover={{ color: "amber.900" }}
+        color="brand.text"
+        _hover={{ color: "brand.hover" }}
         minW="auto"
         h="auto"
       >

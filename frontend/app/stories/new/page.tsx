@@ -5,11 +5,13 @@ import { useRouter } from "next/navigation";
 import { Box, Button, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import { api, ApiError, Question, Story } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
+import { useLanguage } from "@/context/LanguageContext";
 import StoryForm, { StoryFormValues } from "@/components/StoryForm";
 
 export default function NewStoryPage() {
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
+  const { t, locale } = useLanguage();
   const [mode, setMode] = useState<"freeform" | "questions" | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [submitting, setSubmitting] = useState(false);
@@ -35,7 +37,9 @@ export default function NewStoryPage() {
       const story = await api.post<Story>("/stories", {
         mode,
         visibility: values.visibility,
+        is_anonymous: values.is_anonymous,
         title: values.title,
+        language: locale,
         content: mode === "freeform" ? values.content : undefined,
         answers:
           mode === "questions"
@@ -47,42 +51,43 @@ export default function NewStoryPage() {
       });
       router.push(`/stories/${story.id}`);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Something went wrong");
+      setError(err instanceof ApiError ? err.message : t("common.somethingWentWrong"));
       setSubmitting(false);
     }
   };
 
   return (
-    <Flex as="main" direction="column" align="center" px={6} py={16} bg="amber.50" minH="100vh">
+    <Flex as="main" direction="column" align="center" px={6} py={16} bg="bg.page" minH="100vh">
       <Box w="full" maxW="2xl">
-        <Heading as="h1" fontSize="3xl" fontWeight="bold" color="stone.900" mb={2}>
-          Write a new story
+        <Heading as="h1" fontSize="3xl" fontWeight="bold" color="fg.heading" mb={2}>
+          {t("newStory.title")}
         </Heading>
-        <Text color="stone.500" mb={8}>
-          Choose how you&apos;d like to share, then write at your own pace.
+        <Text color="fg.subtle" mb={8}>
+          {t("newStory.subtitle")}
         </Text>
 
         {!mode ? (
-          <Grid templateColumns={{ base: "1fr", sm: "repeat(2, 1fr)" }} gap={4}>
+          <Grid templateColumns={{ base: "1fr", sm: "repeat(3, 1fr)" }} gap={4}>
             <Button
               onClick={() => setMode("freeform")}
               variant="plain"
               textAlign="left"
               display="block"
               h="auto"
-              bg="white"
+              whiteSpace="normal"
+              bg="bg.surface"
               border="1px solid"
-              borderColor="amber.200"
+              borderColor="border.default"
               borderRadius="2xl"
               p={6}
               _hover={{ borderColor: "amber.400" }}
               transition="border-color 0.2s"
             >
-              <Heading as="h2" fontSize="xl" fontWeight="semibold" color="stone.900" mb={2}>
-                Free-form life story
+              <Heading as="h2" fontSize="xl" fontWeight="semibold" color="fg.heading" mb={2}>
+                {t("newStory.freeformTitle")}
               </Heading>
-              <Text color="stone.500" fontSize="sm" fontWeight="normal">
-                Write your story in your own words, at your own pace.
+              <Text color="fg.subtle" fontSize="sm" fontWeight="normal">
+                {t("newStory.freeformDesc")}
               </Text>
             </Button>
             <Button
@@ -91,40 +96,63 @@ export default function NewStoryPage() {
               textAlign="left"
               display="block"
               h="auto"
-              bg="white"
+              whiteSpace="normal"
+              bg="bg.surface"
               border="1px solid"
-              borderColor="amber.200"
+              borderColor="border.default"
               borderRadius="2xl"
               p={6}
               _hover={{ borderColor: "amber.400" }}
               transition="border-color 0.2s"
             >
-              <Heading as="h2" fontSize="xl" fontWeight="semibold" color="stone.900" mb={2}>
-                Lessons learned
+              <Heading as="h2" fontSize="xl" fontWeight="semibold" color="fg.heading" mb={2}>
+                {t("newStory.questionsTitle")}
               </Heading>
-              <Text color="stone.500" fontSize="sm" fontWeight="normal">
-                Answer a few reflective questions to help others learn from your experience.
+              <Text color="fg.subtle" fontSize="sm" fontWeight="normal">
+                {t("newStory.questionsDesc")}
+              </Text>
+            </Button>
+            <Button
+              onClick={() => router.push("/family-tree")}
+              variant="plain"
+              textAlign="left"
+              display="block"
+              h="auto"
+              whiteSpace="normal"
+              bg="bg.surface"
+              border="1px solid"
+              borderColor="border.default"
+              borderRadius="2xl"
+              p={6}
+              _hover={{ borderColor: "amber.400" }}
+              transition="border-color 0.2s"
+            >
+              <Heading as="h2" fontSize="xl" fontWeight="semibold" color="fg.heading" mb={2}>
+                {t("newStory.familyTreeTitle")}
+              </Heading>
+              <Text color="fg.subtle" fontSize="sm" fontWeight="normal">
+                {t("newStory.familyTreeDesc")}
               </Text>
             </Button>
           </Grid>
         ) : (
-          <Box bg="white" border="1px solid" borderColor="amber.200" borderRadius="2xl" p={8}>
+          <Box bg="bg.surface" border="1px solid" borderColor="border.default" borderRadius="2xl" p={8}>
             <Button
               onClick={() => setMode(null)}
               variant="plain"
               fontSize="sm"
-              color="amber.800"
+              color="brand.text"
               _hover={{ textDecoration: "underline" }}
               mb={6}
               px={0}
               h="auto"
             >
-              ← Choose a different way to write
+              {t("newStory.chooseDifferentWay")}
             </Button>
             <StoryForm
               mode={mode}
               questions={questions}
-              submitLabel="Publish story"
+              submitLabel={t("newStory.publish")}
               submitting={submitting}
               error={error}
               onSubmit={handleSubmit}
