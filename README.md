@@ -26,8 +26,4 @@ Try it live: https://frontend-nine-sable-72.vercel.app
 Built with: Next.js 16 + Chakra UI, Express + SQLite, Groq (Llama 3.3) for AI features, DeepL for translation, 
 Resend for email.
 
-Known limitation: this project was built on a $0 budget. Password-reset emails require a verified sending domain, 
-which costs money to register — so that one flow is implemented and tested, but only delivers to the developer's 
-own inbox rather than a real user's. Every other feature is fully functional.
-
 ---
