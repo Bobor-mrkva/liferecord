@@ -21,7 +21,7 @@ Key features:
 - plus on-demand AI translation of public stories
 - Light/dark/system theme, all preferences synced to the account
 
-Try it live: https://frontend-nine-sable-72.vercel.app
+Try it live: https://app.bobor-mrkva.com
 
 Built with: Next.js 16 + Chakra UI, Express + SQLite, Groq (Llama 3.3) for AI features, DeepL for translation, 
 Resend for email.
