@@ -89,7 +89,7 @@ export default function StoryPage() {
                 </Link>
               </>
             )}
-            <TranslateButton story={story} translation={translation} onTranslated={setTranslation} />
+            <TranslateButton story={story} translation={translation} onTranslated={setTranslation} isOwner={isOwner} />
           </Flex>
         </Flex>
         <Text color="fg.subtle" fontSize="sm" mb={6}>

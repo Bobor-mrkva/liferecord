@@ -196,7 +196,8 @@ router.post('/stories/:id/translate', optionalAuth, async (req, res) => {
 
   const story = getViewableStory(req.params.id, req.user && req.user.id);
   if (!story) return res.status(404).json({ error: 'Story not found' });
-  if (story.visibility !== 'public') {
+  const isOwner = req.user && req.user.id === story.user_id;
+  if (story.visibility !== 'public' && !isOwner) {
     return res.status(403).json({ error: 'Only public stories can be translated' });
   }
 

@@ -9,15 +9,17 @@ export default function TranslateButton({
   story,
   translation,
   onTranslated,
+  isOwner,
 }: {
   story: Story;
   translation: Translation | null;
   onTranslated: (translation: Translation | null) => void;
+  isOwner?: boolean;
 }) {
   const { locale, t } = useLanguage();
   const [state, setState] = useState<"idle" | "loading" | "error">("idle");
 
-  if (story.visibility !== "public" || story.language === locale) return null;
+  if ((story.visibility !== "public" && !isOwner) || story.language === locale) return null;
 
   const handleClick = async () => {
     if (translation) {
