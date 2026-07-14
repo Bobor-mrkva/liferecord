@@ -43,14 +43,20 @@ export default function MyStoriesList({
   return (
     <Flex as="main" direction="column" align="center" px={6} py={16} bg="bg.page" minH="100vh">
       <Box w="full" maxW="3xl">
-        <Flex align="center" justify="space-between" mb={2}>
+        <Flex
+          direction={{ base: "column", sm: "row" }}
+          align={{ base: "flex-start", sm: "center" }}
+          justify="space-between"
+          gap={3}
+          mb={2}
+        >
           <Box>
             <Heading as="h1" fontSize="3xl" fontWeight="bold" color="fg.heading" mb={1}>
               {heading}
             </Heading>
             <Text color="fg.subtle">{t("myStoriesList.welcomeBack", { name: user.display_name })}</Text>
           </Box>
-          <Flex gap={3} align="center">
+          <Flex gap={3} align="center" flexWrap="wrap">
             <Link
               href={`${API_URL}/stories/export/all`}
               fontSize="sm"

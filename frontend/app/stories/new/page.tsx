@@ -34,7 +34,7 @@ export default function NewStoryPage() {
     setError(null);
     setSubmitting(true);
     try {
-      const story = await api.post<Story>("/stories", {
+      await api.post<Story>("/stories", {
         mode,
         visibility: values.visibility,
         is_anonymous: values.is_anonymous,
@@ -49,7 +49,7 @@ export default function NewStoryPage() {
               }))
             : undefined,
       });
-      router.push(`/stories/${story.id}`);
+      router.push(mode === "freeform" ? "/dashboard" : "/dashboard/lessons");
     } catch (err) {
       setError(err instanceof ApiError ? err.message : t("common.somethingWentWrong"));
       setSubmitting(false);

@@ -46,8 +46,11 @@ export default function AccountMenu() {
         color="amber.50"
         borderRadius="full"
         _hover={{ bg: "amber.900" }}
+        maxW={{ base: "32", sm: "48" }}
       >
-        {user.display_name}
+        <Box as="span" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">
+          {user.display_name}
+        </Box>
       </Button>
 
       {open && (

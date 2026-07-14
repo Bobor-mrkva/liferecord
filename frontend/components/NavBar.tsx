@@ -32,7 +32,14 @@ export default function NavBar() {
       </Flex>
       <Flex gap={{ base: 2, md: 4 }} rowGap={2} fontSize="sm" align="center" justify="flex-end" flexWrap="wrap">
         {!loading && user && (
-          <Link asChild color="fg.muted" _hover={{ color: "brand.hover" }} transition="color 0.2s" whiteSpace="nowrap">
+          <Link
+            asChild
+            display={{ base: "none", sm: "inline" }}
+            color="fg.muted"
+            _hover={{ color: "brand.hover" }}
+            transition="color 0.2s"
+            whiteSpace="nowrap"
+          >
             <NextLink href="/family-tree">{t("nav.familyTree")}</NextLink>
           </Link>
         )}
